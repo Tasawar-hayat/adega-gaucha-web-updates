@@ -1,0 +1,360 @@
+/* CSS Variables - Structural only */
+:root {
+    --ag-radius-md: 8px;
+    --ag-radius-lg: 12px;
+    --ag-border-color: rgba(150, 150, 150, 0.2);
+}
+
+.ag-blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* 2. Hero & Main Two-Column Layout */
+.ag-blog-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+    margin-top: 150px; /* Pushes content down so it doesn't merge with fixed logo/header */
+}
+
+@media (min-width: 992px) {
+    .ag-blog-layout {
+        grid-template-columns: 7fr 3fr; /* Approx 70/30 split */
+        gap: 4rem;
+        align-items: start;
+    }
+}
+
+/* Left Column: Hero & Content */
+.ag-post-header {
+    margin-bottom: 2rem;
+}
+
+.ag-post-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.ag-post-featured-image-placeholder {
+    width: 100%;
+    border-radius: var(--ag-radius-lg);
+    margin-bottom: 1.5rem;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ag-post-featured-image-placeholder img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: var(--ag-radius-lg);
+}
+
+.ag-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--ag-border-color);
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+.ag-post-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+}
+
+.ag-author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(150, 150, 150, 0.2);
+    overflow: hidden;
+}
+
+.ag-post-share {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: auto;
+}
+
+/* Specific styling for Share Icons as requested */
+.ag-share-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #000000;
+    border: 1px solid #F68625;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F68625;
+    transition: all 0.3s ease;
+}
+
+.ag-share-icon:hover {
+    background-color: #F68625;
+    color: #ffffff;
+}
+
+/* Main Content Typography */
+.ag-post-content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+.ag-post-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+}
+
+.ag-post-content h3 {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin: 2rem 0 1rem;
+}
+
+.ag-post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.ag-post-content blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: center;
+    margin: 3rem 0;
+    padding: 0 2rem;
+}
+
+.ag-post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--ag-radius-md);
+    margin: 2rem 0;
+}
+
+/* Right Column (Sidebar) */
+.ag-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.ag-widget {
+    background-color: rgba(150, 150, 150, 0.05);
+    border: 1px solid var(--ag-border-color);
+    border-radius: var(--ag-radius-md);
+    padding: 1.5rem;
+}
+
+/* Sticky positioning for the sidebar widgets */
+@media (min-width: 992px) {
+    .ag-sidebar-inner {
+        position: sticky;
+        top: 150px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+.ag-widget-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--ag-border-color);
+}
+
+.ag-more-posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ag-more-post-card {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--ag-border-color);
+    text-decoration: none;
+    color: inherit;
+}
+
+.ag-more-post-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.ag-more-post-thumb {
+    width: 80px;
+    height: 60px;
+    border-radius: var(--ag-radius-md);
+    background-color: rgba(150, 150, 150, 0.1);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.ag-more-post-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.ag-contact-widget {
+    text-align: center;
+}
+
+.ag-contact-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--ag-radius-md);
+    font-weight: 600;
+    width: 100%;
+    border: 1px solid var(--ag-border-color);
+    background: transparent;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Bottom Section: Discover More */
+.ag-discover-section {
+    padding: 4rem 0;
+    margin-top: 4rem;
+}
+
+.ag-section-title {
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 3rem;
+}
+
+.ag-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .ag-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.ag-post-card {
+    border: 1px solid var(--ag-border-color);
+    border-radius: var(--ag-radius-md);
+    overflow: hidden;
+    background-color: rgba(150, 150, 150, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.ag-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: rgba(150, 150, 150, 0.1);
+}
+
+.ag-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ag-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.ag-read-more {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: auto;
+    padding-top: 1rem;
+    text-decoration: none;
+    color: #F68625;
+}
+
+/* =========================================
+   ANIMATIONS & HOVER EFFECTS
+   ========================================= */
+@keyframes agFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ag-post-header, .ag-post-content, .ag-sidebar .ag-widget, .ag-post-card {
+    animation: agFadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.ag-post-content {
+    animation-delay: 0.2s;
+}
+
+.ag-sidebar .ag-widget:nth-child(1) {
+    animation-delay: 0.3s;
+}
+.ag-sidebar .ag-widget:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.ag-post-card:nth-child(1) { animation-delay: 0.2s; }
+.ag-post-card:nth-child(2) { animation-delay: 0.3s; }
+.ag-post-card:nth-child(3) { animation-delay: 0.4s; }
+
+/* Interactive Hover States */
+.ag-post-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ag-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.ag-more-post-card {
+    transition: transform 0.3s ease;
+}
+.ag-more-post-card:hover {
+    transform: translateX(5px);
+}
+
+.ag-contact-btn {
+    transition: all 0.3s ease;
+}
+.ag-contact-btn:hover {
+    background-color: #F68625;
+    color: #ffffff !important;
+    border-color: #F68625;
+    box-shadow: 0 4px 15px rgba(246, 134, 37, 0.4);
+}
