@@ -330,7 +330,7 @@
       <h3 class="subtitle animate-text delay-2">Enjoy artisanal cuisine wherever you are</h3>
       
       <p class="description animate-text delay-3">
-        Each meal is carefully prepared using the same high-quality ingredients and attention to detail you'd expect in our dining room. Whether you are ordering a quiet dinner for two or a feast for the family, Adega Gaucha's elevated cuisine is just a few clicks away.
+        Every culinary creation is meticulously prepared using the same premium ingredients and attention to detail you'd expect in our dining room. Whether you are ordering an intimate dinner for two or a grand feast for the family, Adega Gaucha's elevated cuisine is just a few clicks away.
       </p>
       
       <!-- Three Location Buttons (Orlando & Kissimmee on top, Deerfield Beach centered below) -->
@@ -343,45 +343,54 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Elementor safety check to avoid hanging or interfering with edit mode
-      const isEditMode = document.body.classList.contains('elementor-editor-active') || 
-                         (typeof elementorFrontend !== 'undefined' && elementorFrontend.isEditMode());
-      
-      const banner = document.querySelector('#adega-order-banner');
-      if (!banner) return;
+    (function() {
+      function initBanner() {
+        const banner = document.querySelector('#adega-order-banner');
+        if (!banner) return;
 
-      if (isEditMode) {
-        // Instantly show content in page builder without scroll triggers
-        banner.classList.add('visible');
-        return;
+        // Elementor safety check to avoid hanging or interfering with edit mode
+        const isEditMode = document.body.classList.contains('elementor-editor-active') || 
+                           (typeof elementorFrontend !== 'undefined' && elementorFrontend.isEditMode());
+        
+        if (isEditMode) {
+          // Instantly show content in page builder without scroll triggers
+          banner.classList.add('visible');
+          return;
+        }
+
+        // Scroll Entrance Animation Trigger with ultra-sensitive observer configuration
+        const observerOptions = {
+          root: null,
+          rootMargin: '-20px 0px -20px 0px', // Small margins to guarantee instant triggering
+          threshold: 0.05 // Tiny threshold (5%) to auto-activate the moment it enters the screen
+        };
+
+        const bannerObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              banner.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        bannerObserver.observe(banner);
+
+        // Fallback: trigger animation after a short delay in case observer is blocked
+        setTimeout(() => {
+          if (!banner.classList.contains('visible')) {
+            banner.classList.add('visible');
+          }
+        }, 800);
       }
 
-      // Scroll Entrance Animation Trigger using IntersectionObserver
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-      };
-
-      const bannerObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            banner.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      bannerObserver.observe(banner);
-
-      // Fallback: trigger animation after a short delay in case observer is blocked
-      setTimeout(() => {
-        if (!banner.classList.contains('visible')) {
-          banner.classList.add('visible');
-        }
-      }, 1200);
-    });
+      // Execute immediately if DOM is already parsed (highly likely in page builders/AJAX loads)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBanner);
+      } else {
+        initBanner();
+      }
+    })();
   </script>
 </div>
 <!-- ================================================================= -->
