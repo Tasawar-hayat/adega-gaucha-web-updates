@@ -365,14 +365,13 @@
           threshold: 0.5 // Triggers ONLY when 50% of the section is fully visible on the screen
         };
 
-        const bannerObserver = new IntersectionObserver((entries) => {
+        const bannerObserver = new IntersectionObserver((entries, observer) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               // Automatically activate animations when the section comes fully into view
               banner.classList.add('visible');
-            } else {
-              // Automatically reset states when scrolled away so it can replay repeatedly
-              banner.classList.remove('visible');
+              // Unobserve immediately so the animation only runs once per page load
+              observer.unobserve(entry.target);
             }
           });
         }, observerOptions);
