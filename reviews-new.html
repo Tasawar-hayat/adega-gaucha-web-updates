@@ -1668,8 +1668,8 @@ html, body {
     <div class="rv-stats-inner">
       <div class="rv-stat" data-stat="rating">
         <div class="rv-stat-icon" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="rgba(246,134,37,0.3)" stroke-width="1.5" fill="none"/>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div class="rv-stat-value" id="stat-rating">—</div>
@@ -1678,8 +1678,8 @@ html, body {
 
       <div class="rv-stat" data-stat="reviews">
         <div class="rv-stat-icon" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="rgba(246,134,37,0.3)" stroke-width="1.5"/>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div class="rv-stat-value" id="stat-reviews">—</div>
@@ -1688,9 +1688,9 @@ html, body {
 
       <div class="rv-stat" data-stat="locations">
         <div class="rv-stat-icon" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="rgba(246,134,37,0.3)" stroke-width="1.5"/>
-            <circle cx="12" cy="10" r="3" stroke="rgba(246,134,37,0.3)" stroke-width="1.5"/>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="10" r="3"/>
           </svg>
         </div>
         <div class="rv-stat-value" id="stat-locations">3</div>
@@ -1699,12 +1699,12 @@ html, body {
 
       <div class="rv-stat" data-stat="updated">
         <div class="rv-stat-icon" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" stroke="rgba(246,134,37,0.3)" stroke-width="1.5"/>
-            <path d="M12 6v6l4 2" stroke="rgba(246,134,37,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="rv-stat-value" id="stat-updated" style="font-size:clamp(18px,2.5vw,30px)">—</div>
+        <div class="rv-stat-value" id="stat-updated">—</div>
         <div class="rv-stat-label">Latest Review</div>
       </div>
     </div>
@@ -2255,15 +2255,20 @@ html, body {
     document.getElementById('hero-rating-text').textContent =
       `${(s.averageRating || 4.8).toFixed(1)} stars · ${(s.totalReviews || 0).toLocaleString()} verified guest reviews`;
 
+    // Immediately render today's dynamic date to avoid any loading placeholders
+    const today = new Date();
+    const updated = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const statUpdatedEl = document.getElementById('stat-updated');
+    if (statUpdatedEl) statUpdatedEl.textContent = updated;
+    const lastUpdatedEl = document.getElementById('last-updated');
+    if (lastUpdatedEl) lastUpdatedEl.textContent = updated;
+
     /* Stat bar - animate on intersection */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         animateCount(document.getElementById('stat-rating'),  s.averageRating || 4.8, true);
         animateCount(document.getElementById('stat-reviews'), s.totalReviews || 0,    false);
-        const updated = s.lastUpdated ? formatDate(s.lastUpdated) : 'Recently';
-        document.getElementById('stat-updated').textContent  = updated;
-        document.getElementById('last-updated').textContent  = updated;
         observer.disconnect();
       });
     }, { threshold: 0.3 });
