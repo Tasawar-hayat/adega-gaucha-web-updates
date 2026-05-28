@@ -296,17 +296,17 @@ img {
   align-items: center;
   justify-content: center;
   padding: 14px 30px;
-  color: #ffffff; /* Crisp white text for absolute readability */
+  color: #ffffff !important; /* Force pure white text, preventing active theme overrides */
   font-family: var(--font-dropdown);
   font-size: 0.82rem;
   font-weight: 600; /* Solid bold font weight for maximum readability */
   letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
-  background: rgba(10, 10, 10, 0.8); /* Dark semi-transparent blur to pop white text from moving video */
+  background: rgba(10, 10, 10, 0.75) !important; /* Dark semi-transparent blur to pop white text */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.45); /* Bright white border */
+  border: 1px solid rgba(255, 255, 255, 0.45) !important; /* Brighter high-contrast white border */
   border-radius: 6px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
@@ -316,12 +316,12 @@ img {
 }
 
 .ag-option:hover {
-  color: #ffffff;
-  border-color: #ffffff; /* Solid white border on hover */
-  background: rgba(255, 255, 255, 0.16); /* Brilliant white shimmer backdrop */
+  color: #ffffff !important; /* Super bright white text on hover */
+  border-color: #ffffff !important; /* Solid bright white border on hover */
+  background: rgba(255, 255, 255, 0.16) !important; /* Brilliant white shimmer backdrop */
   letter-spacing: 0.25em;
-  transform: translateY(-4px) scale(1.03); /* Dynamic hover scale lift */
-  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.12), 0 15px 40px rgba(0, 0, 0, 0.6);
+  transform: translateY(-5px) scale(1.08); /* Increased scale factor to 1.08 for highly distinct sizing zoom on hover */
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.2), 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
 /* =========================================
