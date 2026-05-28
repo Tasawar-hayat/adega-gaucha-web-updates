@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adega Gaucha | Premium Brazilian Steakhouse</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Experience the authentic taste of Southern Brazil at Adega Gaucha. Reserve your table for premium fire-roasted meats, catering, and to-go.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;600;700;800&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <style>
+/* =========================================
+   ADEGA GAUCHA - PREMIUM DARK MODE THEME
+   ========================================= */
+
+:root {
+  /* Brand Colors */
+  --primary-red: #B11116;      /* Adega Gaucha Red */
+  --primary-orange: #F68625;   /* Adega Gaucha Orange */
+  
+  /* Dark Mode Aesthetic */
+  --dark-bg: #0d0d0d;
+  --dark-surface: #1a1a1a;
+  --dark-surface-elevated: #242424;
+  
+  /* Typography Colors */
+  --text-light: #f5f5f5;
+  --text-muted: #a0a0a0;
+  
+  /* Accents */
+  --gold-accent: #c5a059;
+  
+  /* Typography */
+  --font-heading: 'Oswald', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-dropdown: 'Futura', 'Futura PT', 'Jost', sans-serif;
+  
+  /* Layout */
+  --max-width: 1400px;
+}
+
+/* =========================================
+   RESET & FOUNDATION
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-body);
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* =========================================
+   NEW SPLIT HERO SECTION
+   ========================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* HERO MAIN CONTENT */
+.hero-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none; /* iPhone touch fix */
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* Lite black overlay for text readability */
+  z-index: 2;
+  pointer-events: none; /* iPhone touch fix */
+}
+
+/* ADEGA GAUCHA PREMIUM HERO LAYOUT */
+.ag-premium-layout {
+  position: relative;
+  z-index: 999998 !important; /* iPhone Touch Fix */
+  pointer-events: none; /* Let touches pass to background if empty */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 2rem;
+}
+
+/* 
+   PREMIUM GLASS BOX - VERTICALLY ALIGNED TO PREVENT DROPDOWN OVERFLOW
+*/
+.ag-premium-box {
+  background: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 12px;
+  padding: 0;
+  width: fit-content;
+  max-width: 95%;
+  position: absolute;
+  bottom: 18vh; /* Moved up to ensure complete visibility of downward dropdown */
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.4s ease;
+  z-index: 999999 !important; /* iPhone Touch Fix */
+  pointer-events: auto !important; /* Ensure box is deeply clickable */
+  animation: glassCoolDown 1.8s ease-in-out 0.8s forwards;
+}
+
+.ag-premium-box::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 20px #ff5e00, inset 0 0 20px #ff5e00, 0 0 40px #ff9d00;
+  border-color: #ffb300;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  animation: forgeBorder 1.5s ease-in-out 0.2s forwards;
+}
+
+.ag-box-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@keyframes forgeBorder {
+  0% { opacity: 0; transform: scale(0.95); }
+  30% { opacity: 1; transform: scale(1); box-shadow: 0 0 30px #ff5e00, inset 0 0 30px #ff5e00, 0 0 60px #ff9d00; }
+  100% { opacity: 0; transform: scale(1); box-shadow: 0 0 5px #ff5e00; }
+}
+
+@keyframes glassCoolDown {
+  0% { background: transparent; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); box-shadow: none; }
+  100% { background: rgba(10, 10, 10, 0.45); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); box-shadow: 0 25px 60px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.15); }
+}
+
+.ag-premium-box:hover {
+  box-shadow: 0 30px 70px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(250, 135, 34, 0.3);
+}
+
+.ag-dropdown-wrapper {
+  position: relative;
+  width: 100%;
+  user-select: none;
+  pointer-events: auto !important;
+}
+
+/* 
+   RESERVE BUTTON - RETAINS THE PREMIUM NEW HOME PAGE STYLE INTACT
+*/
+.ag-btn-primary.ag-select-trigger {
+  margin: 0 auto;
+  padding: 18px 36px;
+  font-size: 1.15rem;
+  width: auto;
+  min-width: 290px;
+  box-shadow: 0 10px 30px rgba(250, 134, 34, 0.5);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+}
+
+.ag-btn-primary.ag-select-trigger:hover, 
+.ag-btn-primary.ag-select-trigger.open {
+  border-color: var(--primary-orange);
+  background: rgba(0,0,0,0.7);
+  box-shadow: 0 15px 35px rgba(250, 134, 34, 0.6);
+}
+
+.ag-arrow {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8rem;
+  margin-left: 12px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.ag-btn-primary.ag-select-trigger:hover .ag-arrow, 
+.ag-btn-primary.ag-select-trigger.open .ag-arrow {
+  color: var(--primary-orange);
+}
+
+/* The arrow points DOWN (▼) initially, and rotates 180deg to point UP (▲) when open */
+.ag-btn-primary.ag-select-trigger.open .ag-arrow {
+  transform: rotate(180deg);
+}
+
+/* 
+   DROPDOWN MENU - OPEN DOWNWARDS (MODERN GLASSMORPHISM SCHEME MATCHING SCREENSHOT)
+*/
+.ag-options-container {
+  position: absolute;
+  top: calc(100% + 15px); /* Positioned to open cleanly below the button */
+  bottom: auto;
+  left: 50%;
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-10px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999999 !important; /* iPhone fix */
+  box-shadow: none;
+}
+
+.ag-options-container.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 
+   PREMIUM LOCATION BUTTONS - HIGH CONTRAST PURE WHITE GLASSMORPHISM
+*/
+.ag-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 30px;
+  color: #ffffff; /* Crisp white text for absolute readability */
+  font-family: var(--font-dropdown);
+  font-size: 0.82rem;
+  font-weight: 600; /* Solid bold font weight for maximum readability */
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: rgba(10, 10, 10, 0.8); /* Dark semi-transparent blur to pop white text from moving video */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.45); /* Bright white border */
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ag-option:hover {
+  color: #ffffff;
+  border-color: #ffffff; /* Solid white border on hover */
+  background: rgba(255, 255, 255, 0.16); /* Brilliant white shimmer backdrop */
+  letter-spacing: 0.25em;
+  transform: translateY(-4px) scale(1.03); /* Dynamic hover scale lift */
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.12), 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================================
+   RESPONSIVENESS & RESPONSIVE VERTICAL ALIGNMENT
+   ========================================= */
+@media(max-width: 768px) {
+  .ag-premium-box { 
+    max-width: 95%; 
+    bottom: 22vh; /* Extra spacing on tablet for optimal dropdown display */
+  }
+  .ag-btn-primary.ag-select-trigger { 
+    padding: 16px 24px; 
+    font-size: 1.05rem; 
+    min-width: 260px; 
+  }
+  .ag-options-container { 
+    gap: 10px; 
+    width: max-content; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+  }
+  .ag-option { 
+    padding: 10px 20px; 
+    font-size: 0.75rem; 
+  }
+}
+
+@media(max-width: 600px) {
+  .ag-options-container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    align-items: center;
+    gap: 10px;
+  }
+  .ag-option {
+    width: 100%;
+    padding: 12px 20px;
+  }
+}
+
+@media(max-width: 480px) {
+  .ag-premium-layout { 
+    padding: 0.5rem; 
+  }
+  .ag-premium-box { 
+    bottom: 28vh; /* Spaced high on small mobile so vertical stack fits perfectly inside hero area */
+    width: 100%; 
+    max-width: 100%; 
+  }
+  .ag-btn-primary.ag-select-trigger { 
+    padding: 14px 20px !important; 
+    font-size: 0.95rem !important; 
+    width: 100% !important; 
+    max-width: 280px; 
+    margin: 0 auto !important; 
+    justify-content: center;
+  }
+  .ag-options-container { 
+    flex-direction: column; 
+    width: 100%; 
+    max-width: 280px;
+    align-items: center; 
+    gap: 10px; 
+  }
+  .ag-option { 
+    padding: 12px 10px; 
+    font-size: 0.75rem; 
+    width: 100%; 
+    text-align: center; 
+  }
+}
+
+/* =========================================
+   EMBER & FIRE SPARKS EFFECT
+   ========================================= */
+.fire-spark-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  pointer-events: none;
+  z-index: 6;
+  overflow: visible;
+}
+
+.ember {
+  position: absolute;
+  bottom: -40px;
+  width: 6px;
+  height: 6px;
+  background: #ff5e00;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff5e00, 0 0 20px #ff9d00;
+  opacity: 0;
+  filter: blur(1px);
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--fly-y)) translateX(var(--fly-x)) scale(0);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+  <!-- PREMIUM HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-bg-overlay"></div>
+    <video autoplay loop muted playsinline class="hero-bg-video">
+      <source src="https://new.adegagaucha.com/wp-content/uploads/2024/09/Adega_Gaucha_Web_intro_2_5MB.mp4" type="video/mp4">
+    </video>
+    
+    <!-- Adega Gaucha Premium Hero Content -->
+    <div class="ag-premium-layout">
+      
+      <!-- Fire Embers Container -->
+      <div class="fire-spark-container" id="ember-container"></div>
+
+      <!-- Central Reservation Box -->
+      <div class="ag-premium-box">
+        <div class="ag-box-content">
+          <div class="ag-dropdown-wrapper" id="ag-custom-dropdown">
+            <button class="ag-btn-primary ag-select-trigger" id="ag-book-btn">
+              RESERVE YOUR TABLE NOW <span class="ag-arrow">▼</span>
+            </button>
+            <div class="ag-options-container">
+              <a href="https://adegagaucha.com/reservations/orlando/" target="_blank" rel="noopener" class="ag-option">Orlando</a>
+              <a href="https://adegagaucha.com/reservations/kissimmee/" target="_blank" rel="noopener" class="ag-option">Kissimmee</a>
+              <a href="https://adegagaucha.com/reservations/deerfieldbeach/" target="_blank" rel="noopener" class="ag-option">Deerfield Beach</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dropdown & Ember Animation Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // Fire Ember Generation
+      const emberContainer = document.getElementById('ember-container');
+      if (emberContainer) {
+        // Optimize ember count for high performance
+        const maxEmbers = 180;
+        for (let i = 0; i < maxEmbers; i++) {
+          const ember = document.createElement('div');
+          ember.classList.add('ember');
+          
+          // Randomize starting X position (center-weighted)
+          const left = 50 + (Math.random() - 0.5) * 60;
+          ember.style.left = left + '%';
+          
+          // Randomize animation variables
+          const flyY = -300 - Math.random() * 450 + 'px';
+          const flyX = (Math.random() - 0.5) * 650 + 'px';
+          const duration = 0.4 + Math.random() * 0.5 + 's';
+          const delay = Math.random() * 0.15 + 's';
+          
+          ember.style.setProperty('--fly-y', flyY);
+          ember.style.setProperty('--fly-x', flyX);
+          ember.style.animation = `flyUp ${duration} cubic-bezier(0.2, 0.8, 0.2, 1) ${delay} forwards`;
+          
+          // Color variation (orange to yellow sparks)
+          if (Math.random() > 0.6) {
+            ember.style.background = '#ffb300';
+            ember.style.boxShadow = '0 0 10px #ffb300, 0 0 20px #fff';
+          }
+          
+          emberContainer.appendChild(ember);
+        }
+      }
+
+      // Dropdown Functionality
+      const dropdown = document.getElementById('ag-custom-dropdown');
+      if (!dropdown) return;
+      
+      const trigger = dropdown.querySelector('.ag-select-trigger');
+      const optionsContainer = dropdown.querySelector('.ag-options-container');
+
+      function toggleDropdown(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        trigger.classList.toggle('open');
+        optionsContainer.classList.toggle('open');
+      }
+
+      // Attach click and touch events safely
+      trigger.addEventListener('click', toggleDropdown);
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target)) {
+          trigger.classList.remove('open');
+          optionsContainer.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
