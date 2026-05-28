@@ -288,7 +288,7 @@ html, body {
 }
 
 .rv-stat {
-  padding: 40px 24px;
+  padding: 44px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -298,23 +298,58 @@ html, body {
   position: relative;
   transition: background 0.4s var(--ease-expo), box-shadow 0.4s var(--ease-expo);
   cursor: default;
+  overflow: hidden;
+  
+  /* Entrance Animation Base State */
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  will-change: transform, opacity;
 }
 
 .rv-stat:last-child { border-right: none; }
 
+/* Staggered entrance animation class */
+.rv-stat.animate-in {
+  animation: statFadeIn 0.9s var(--ease-expo) forwards;
+}
+
+@keyframes statFadeIn {
+  from { opacity: 0; transform: translateY(35px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Premium kinetic bottom accent line */
+.rv-stat::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.5s var(--ease-expo);
+}
+
+/* ─── REACTIVE HOVER BEAUTIFICATION ─────────────────────────── */
 .rv-stat:hover { 
   background: var(--orange-bg); 
-  box-shadow: inset 0 0 30px rgba(246,134,37,0.08); 
+  box-shadow: inset 0 0 35px rgba(246,134,37,0.06); 
+}
+
+.rv-stat:hover::after {
+  transform: scaleX(1);
 }
 
 .rv-stat:hover .rv-stat-value {
   color: var(--white);
-  transform: scale(1.05);
-  text-shadow: 0 0 15px rgba(246,134,37,0.25);
+  transform: scale(1.04);
+  text-shadow: 0 0 20px rgba(246,134,37,0.3);
 }
 
 .rv-stat:hover .rv-stat-icon svg {
-  transform: scale(1.1) rotate(-5deg);
+  transform: translateY(-4px) scale(1.08);
   opacity: 0.35;
   color: var(--orange-light);
 }
@@ -330,34 +365,19 @@ html, body {
   margin: 0;
   padding: 0;
   text-align: center;
-  transition: color 0.3s ease, transform 0.3s var(--ease-expo), text-shadow 0.3s ease;
+  transition: color 0.3s ease, transform 0.4s var(--ease-expo), text-shadow 0.3s ease;
 }
 
-/* Dynamic Vertical Rolling Day Scroller */
-.rv-date-day-scroller {
-  display: inline-block;
-  vertical-align: top;
-  height: clamp(25px, 3vw, 40px);
-  overflow: hidden;
-  position: relative;
+.rv-stat-icon {
+  position: absolute;
+  top: 16px;
+  right: 18px;
 }
 
-.rv-date-day-track {
-  display: flex;
-  flex-direction: column;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-.rv-date-day-track.rolled {
-  transform: translateY(-50%);
-}
-
-.rv-date-day-item {
-  display: block;
-  height: clamp(25px, 3vw, 40px);
-  line-height: 1.1;
-  white-space: nowrap;
+.rv-stat-icon svg {
+  color: var(--orange);
+  opacity: 0.12;
+  transition: transform 0.4s var(--ease-expo), opacity 0.4s ease, color 0.4s ease;
 }
 
 .rv-stat-label {
@@ -2282,65 +2302,38 @@ html, body {
     document.getElementById('hero-rating-text').textContent =
       `${(s.averageRating || 4.8).toFixed(1)} stars · ${(s.totalReviews || 0).toLocaleString()} verified guest reviews`;
 
-    // Immediately calculate dynamic dates
+    // Immediately calculate dynamic dates statically to avoid any jerking or loading jumps
     const today = new Date();
-    const prev = new Date();
-    prev.setDate(today.getDate() - 2); // 2 days ago
-
     const currentYear = today.getFullYear();
     const currentMonthStr = today.toLocaleDateString('en-US', { month: 'short' });
     const currentDay = today.getDate();
-
-    const prevMonthStr = prev.toLocaleDateString('en-US', { month: 'short' });
-    const prevDay = prev.getDate();
-    const prevYear = prev.getFullYear();
+    const formattedDate = `${currentMonthStr} ${currentDay}, ${currentYear}`;
 
     const statUpdatedEl = document.getElementById('stat-updated');
-    if (statUpdatedEl) {
-      if (currentMonthStr === prevMonthStr && currentYear === prevYear) {
-        // Same month & year: keep month/year static and only roll the day number!
-        statUpdatedEl.innerHTML = `
-          <span class="rv-date-month">${currentMonthStr} </span>
-          <span class="rv-date-day-scroller">
-            <span class="rv-date-day-track" id="day-scroll-track">
-              <span class="rv-date-day-item">${prevDay}</span>
-              <span class="rv-date-day-item">${currentDay}</span>
-            </span>
-          </span>
-          <span class="rv-date-year">, ${currentYear}</span>
-        `;
-      } else {
-        // Cross boundary month: roll month and day together to be visually perfect
-        statUpdatedEl.innerHTML = `
-          <span class="rv-date-day-scroller">
-            <span class="rv-date-day-track" id="day-scroll-track">
-              <span class="rv-date-day-item">${prevMonthStr} ${prevDay}</span>
-              <span class="rv-date-day-item">${currentMonthStr} ${currentDay}</span>
-            </span>
-          </span>
-          <span class="rv-date-year">, ${currentYear}</span>
-        `;
-      }
-    }
+    if (statUpdatedEl) statUpdatedEl.textContent = formattedDate;
     const lastUpdatedEl = document.getElementById('last-updated');
-    if (lastUpdatedEl) lastUpdatedEl.textContent = `${currentMonthStr} ${currentDay}, ${currentYear}`;
+    if (lastUpdatedEl) lastUpdatedEl.textContent = formattedDate;
 
     /* Stat bar - animate on intersection */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
+        
+        // Trigger number counters
         animateCount(document.getElementById('stat-rating'),  s.averageRating || 4.8, true);
         animateCount(document.getElementById('stat-reviews'), s.totalReviews || 0,    false);
         
-        // Trigger the dynamic vertical rolling scroller animation
-        setTimeout(() => {
-          const track = document.getElementById('day-scroll-track');
-          if (track) track.classList.add('rolled');
-        }, 300);
+        // Premium staggered entrance animation for the four cards
+        const cards = document.querySelectorAll('.rv-stat');
+        cards.forEach((card, idx) => {
+          setTimeout(() => {
+            card.classList.add('animate-in');
+          }, idx * 120);
+        });
 
         observer.disconnect();
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
     observer.observe(document.getElementById('rv-stats'));
 
