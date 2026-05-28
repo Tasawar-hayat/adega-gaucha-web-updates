@@ -333,8 +333,8 @@ html, body {
   transition: color 0.3s ease, transform 0.3s var(--ease-expo), text-shadow 0.3s ease;
 }
 
-/* Dynamic Vertical Rolling Date Scroller */
-.rv-date-scroller {
+/* Dynamic Vertical Rolling Day Scroller */
+.rv-date-day-scroller {
   display: inline-block;
   vertical-align: top;
   height: clamp(25px, 3vw, 40px);
@@ -342,18 +342,18 @@ html, body {
   position: relative;
 }
 
-.rv-date-scroll-track {
+.rv-date-day-track {
   display: flex;
   flex-direction: column;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
-.rv-date-scroll-track.rolled {
+.rv-date-day-track.rolled {
   transform: translateY(-50%);
 }
 
-.rv-date-item {
+.rv-date-day-item {
   display: block;
   height: clamp(25px, 3vw, 40px);
   line-height: 1.1;
@@ -2282,28 +2282,48 @@ html, body {
     document.getElementById('hero-rating-text').textContent =
       `${(s.averageRating || 4.8).toFixed(1)} stars · ${(s.totalReviews || 0).toLocaleString()} verified guest reviews`;
 
-    // Immediately calculate and render rolling dynamic date to avoid loading placeholders
+    // Immediately calculate dynamic dates
     const today = new Date();
     const prev = new Date();
     prev.setDate(today.getDate() - 2); // 2 days ago
 
-    const options = { month: 'short', day: 'numeric', year: 'numeric' };
-    const currentDateStr = today.toLocaleDateString('en-US', options);
-    const prevDateStr = prev.toLocaleDateString('en-US', options);
+    const currentYear = today.getFullYear();
+    const currentMonthStr = today.toLocaleDateString('en-US', { month: 'short' });
+    const currentDay = today.getDate();
+
+    const prevMonthStr = prev.toLocaleDateString('en-US', { month: 'short' });
+    const prevDay = prev.getDate();
+    const prevYear = prev.getFullYear();
 
     const statUpdatedEl = document.getElementById('stat-updated');
     if (statUpdatedEl) {
-      statUpdatedEl.innerHTML = `
-        <span class="rv-date-scroller">
-          <span class="rv-date-scroll-track" id="date-scroll-track">
-            <span class="rv-date-item">${prevDateStr}</span>
-            <span class="rv-date-item">${currentDateStr}</span>
+      if (currentMonthStr === prevMonthStr && currentYear === prevYear) {
+        // Same month & year: keep month/year static and only roll the day number!
+        statUpdatedEl.innerHTML = `
+          <span class="rv-date-month">${currentMonthStr} </span>
+          <span class="rv-date-day-scroller">
+            <span class="rv-date-day-track" id="day-scroll-track">
+              <span class="rv-date-day-item">${prevDay}</span>
+              <span class="rv-date-day-item">${currentDay}</span>
+            </span>
           </span>
-        </span>
-      `;
+          <span class="rv-date-year">, ${currentYear}</span>
+        `;
+      } else {
+        // Cross boundary month: roll month and day together to be visually perfect
+        statUpdatedEl.innerHTML = `
+          <span class="rv-date-day-scroller">
+            <span class="rv-date-day-track" id="day-scroll-track">
+              <span class="rv-date-day-item">${prevMonthStr} ${prevDay}</span>
+              <span class="rv-date-day-item">${currentMonthStr} ${currentDay}</span>
+            </span>
+          </span>
+          <span class="rv-date-year">, ${currentYear}</span>
+        `;
+      }
     }
     const lastUpdatedEl = document.getElementById('last-updated');
-    if (lastUpdatedEl) lastUpdatedEl.textContent = currentDateStr;
+    if (lastUpdatedEl) lastUpdatedEl.textContent = `${currentMonthStr} ${currentDay}, ${currentYear}`;
 
     /* Stat bar - animate on intersection */
     const observer = new IntersectionObserver((entries) => {
@@ -2314,7 +2334,7 @@ html, body {
         
         // Trigger the dynamic vertical rolling scroller animation
         setTimeout(() => {
-          const track = document.getElementById('date-scroll-track');
+          const track = document.getElementById('day-scroll-track');
           if (track) track.classList.add('rolled');
         }, 300);
 
