@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adega Gaucha | Premium Brazilian Steakhouse</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Experience the authentic taste of Southern Brazil at Adega Gaucha. Reserve your table for premium fire-roasted meats, catering, and to-go.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;600;700;800&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <style>
+/* =========================================
+   ADEGA GAUCHA - PREMIUM DARK MODE THEME
+   ========================================= */
+
+:root {
+  /* Brand Colors */
+  --primary-red: #B11116;      /* Adega Gaucha Red */
+  --primary-orange: #F68625;   /* Adega Gaucha Orange */
+  
+  /* Dark Mode Aesthetic */
+  --dark-bg: #0d0d0d;
+  --dark-surface: #1a1a1a;
+  --dark-surface-elevated: #242424;
+  
+  /* Typography Colors */
+  --text-light: #f5f5f5;
+  --text-muted: #a0a0a0;
+  
+  /* Accents */
+  --gold-accent: #c5a059;
+  
+  /* Typography */
+  --font-heading: 'Oswald', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Layout */
+  --max-width: 1400px;
+}
+
+/* =========================================
+   RESET & FOUNDATION
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-body);
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal panning but allows scrolling down */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* =========================================
+   BUTTONS & CTAs (Conversion Focus)
+   ========================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary-orange);
+  color: #fff;
+  border: 2px solid var(--primary-orange);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background-color: #d8711c; /* slightly darker orange for hover */
+  border-color: #d8711c;
+  box-shadow: 0 4px 15px rgba(246, 134, 37, 0.4);
+}
+
+.dropdown-icon {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn-outline:hover {
+  background: #fff;
+  color: var(--dark-bg);
+}
+
+/* =========================================
+   NEW PREMIUM HEADER (DUNWOODY STYLE)
+   ========================================= */
+.ag-main-header {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.ag-top-bar {
+  background: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 8px 0;
+}
+
+.ag-top-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  padding: 0 4rem;
+}
+
+.ag-social-icons {
+  display: flex;
+  gap: 15px;
+}
+.ag-social-icons svg {
+  width: 14px;
+  height: 14px;
+  fill: #fff;
+  transition: fill 0.3s ease;
+  cursor: pointer;
+}
+.ag-social-icons svg:hover {
+  fill: var(--primary-orange);
+}
+
+.ag-top-links {
+  display: flex;
+  gap: 25px;
+}
+.ag-top-links a {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  color: #c5a059;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+.ag-top-links a:hover {
+  color: #fff;
+}
+.ag-top-links a:last-child {
+  color: #fff;
+}
+.ag-top-links a:last-child:hover {
+  color: var(--primary-orange);
+}
+
+.ag-navbar {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ag-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  padding: 0 4rem;
+  position: relative;
+}
+
+.ag-nav-left, .ag-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex: 1;
+}
+.ag-nav-left { justify-content: flex-end; padding-right: 40px; }
+.ag-nav-right { justify-content: flex-start; padding-left: 40px; }
+
+.ag-nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.ag-nav-link:hover {
+  color: var(--primary-orange);
+}
+
+.ag-logo-wrapper {
+  flex: 0 0 auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ag-logo-wrapper img {
+  height: 55px;
+}
+
+.btn-reservations {
+  background: var(--primary-orange);
+  color: #ffffff !important;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+.btn-reservations:hover {
+  background: #d8711c;
+  color: #ffffff !important;
+}
+
+/* MOBILE TOGGLE */
+.ag-mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.ag-mobile-menu-toggle span {
+  width: 30px;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+/* DRAWER */
+.ag-drawer-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 2000;
+  opacity: 0; visibility: hidden;
+  transition: all 0.3s ease;
+}
+.ag-drawer-overlay.active { opacity: 1; visibility: visible; }
+
+.ag-mobile-drawer {
+  position: fixed;
+  top: 0; left: -300px;
+  width: 300px; height: 100%;
+  background: var(--dark-bg);
+  z-index: 2001;
+  box-shadow: 2px 0 20px rgba(0,0,0,0.8);
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.ag-mobile-drawer.active { left: 0; }
+
+.ag-drawer-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.ag-drawer-logo { height: 40px; }
+.ag-drawer-close { font-size: 2.5rem; color: #fff; cursor: pointer; line-height: 1; }
+
+.ag-drawer-nav {
+  display: flex; flex-direction: column;
+  padding: 20px;
+  gap: 15px;
+}
+.ag-drawer-nav a {
+  color: #fff; font-family: 'Inter', sans-serif;
+  font-size: 1rem; font-weight: 500;
+  letter-spacing: 1px;
+}
+.ag-drawer-btn {
+  margin-top: 10px;
+  background: var(--primary-orange);
+  text-align: center; padding: 12px; border-radius: 4px;
+}
+
+.ag-drawer-footer {
+  margin-top: auto;
+  padding: 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.ag-drawer-footer a { color: #c5a059; font-size: 0.9rem; }
+.ag-drawer-socials { display: flex; gap: 15px; margin-top: 10px; }
+.ag-drawer-socials svg { width: 16px; height: 16px; fill: #fff; }
+
+/* HEADER RESPONSIVE */
+@media(max-width: 1100px) {
+  .ag-top-bar-container, .ag-nav-container { padding: 0 2rem; }
+  .ag-nav-left, .ag-nav-right { gap: 15px; }
+  .ag-nav-left { padding-right: 20px; }
+  .ag-nav-right { padding-left: 20px; }
+}
+@media(max-width: 992px) {
+  .ag-nav-left { display: none; }
+  .ag-nav-right .ag-nav-link { display: none; }
+  .ag-nav-right { padding-left: 0; flex: 0 0 auto; gap: 0; }
+  .ag-top-links { display: none; }
+  .ag-mobile-menu-toggle { display: flex; flex: 0 0 auto; }
+  .ag-nav-container { justify-content: space-between; }
+  .ag-logo-wrapper { position: absolute; left: 50%; top: 25px; transform: translateX(-50%); z-index: 1005; }
+}
+@media(max-width: 480px) {
+  .ag-top-bar-container, .ag-nav-container { padding: 0 1rem; }
+  .ag-logo-wrapper img { height: 40px; }
+  .btn-reservations { padding: 8px 12px; font-size: 0.75rem; }
+}
+
+/* =========================================
+   SECTION STYLING
+   ========================================= */
+.section {
+  padding: 6rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--primary-orange);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+/* =========================================
+   NEW SPLIT HERO SECTION (Screenshot Match)
+   ========================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  /* overflow: hidden removed so bottom overlapping cards remain fully visible */
+}
+
+/* HERO MAIN CONTENT */
+.hero-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* Lite black overlay for text readability */
+  z-index: 2;
+}
+/* ADEGA GAUCHA PREMIUM HERO LAYOUT */
+.ag-premium-layout {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.ag-premium-box {
+  background: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.4s ease;
+  z-index: 10;
+  animation: glassCoolDown 1.8s ease-in-out 0.8s forwards;
+}
+
+.ag-premium-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 20px #ff5e00, inset 0 0 20px #ff5e00, 0 0 40px #ff9d00;
+  border-color: #ffb300;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  animation: forgeBorder 1.5s ease-in-out 0.2s forwards;
+}
+
+.ag-box-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: contentFadeIn 1.5s ease-in-out 1.2s forwards;
+}
+
+@keyframes forgeBorder {
+  0% { opacity: 0; transform: scale(0.95); }
+  30% { opacity: 1; transform: scale(1); box-shadow: 0 0 30px #ff5e00, inset 0 0 30px #ff5e00, 0 0 60px #ff9d00; }
+  100% { opacity: 0; transform: scale(1); box-shadow: 0 0 5px #ff5e00; }
+}
+
+@keyframes glassCoolDown {
+  0% { background: transparent; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); box-shadow: none; }
+  100% { background: rgba(10, 10, 10, 0.45); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); box-shadow: 0 25px 60px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.15); }
+}
+
+@keyframes contentFadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.ag-premium-box:hover {
+  box-shadow: 0 30px 70px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(250, 135, 34, 0.3);
+}
+
+.ag-box-content h2 {
+  font-family: 'Oswald', sans-serif;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+.ag-form-group {
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.ag-form-group label {
+  display: block;
+  color: rgba(255,255,255,0.8);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.ag-dropdown-wrapper {
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+.ag-select-trigger {
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 16px 20px;
+  font-size: 1.05rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ag-select-trigger:hover, .ag-select-trigger.open {
+  border-color: var(--primary-orange);
+  background: rgba(0,0,0,0.7);
+}
+
+.ag-arrow {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.ag-select-trigger:hover .ag-arrow, .ag-select-trigger.open .ag-arrow {
+  color: var(--primary-orange);
+}
+.ag-select-trigger.open .ag-arrow {
+  transform: rotate(180deg);
+}
+
+.ag-options-container {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--primary-orange);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+}
+
+.ag-options-container.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.ag-option {
+  padding: 14px 20px;
+  color: rgba(255,255,255,0.85);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.2s ease;
+}
+
+.ag-option:last-child {
+  border-bottom: none;
+}
+
+.ag-option:hover, .ag-option.selected {
+  background-color: var(--primary-orange);
+  color: #fff;
+}
+
+.ag-btn-primary {
+  width: 100%;
+  background: var(--primary-orange);
+  color: #fff;
+  border: none;
+  padding: 16px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 25px rgba(250, 135, 34, 0.4);
+}
+
+.ag-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(250, 135, 34, 0.6);
+  background: #ff983f;
+}
+
+.ag-btn-primary span, .ag-btn-secondary span {
+  transition: transform 0.3s ease;
+}
+.ag-btn-primary:hover span, .ag-btn-secondary:hover span {
+  transform: translateX(5px);
+}
+
+.ag-btn-secondary {
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.ag-btn-secondary:hover {
+  background: rgba(250, 135, 34, 0.1);
+  border-color: var(--primary-orange);
+  color: var(--primary-orange);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media(max-width: 768px) {
+  .ag-premium-box { padding: 1.2rem; max-width: 90%; border-radius: 16px; bottom: 10px; }
+  .ag-premium-box h2 { font-size: 1.5rem; margin-bottom: 1rem; letter-spacing: 1px; }
+  .ag-form-group { margin-bottom: 1.2rem; }
+  .ag-form-group label { margin-bottom: 6px; font-size: 0.85rem; }
+  .ag-btn-primary, .ag-btn-secondary { padding: 12px; font-size: 0.9rem; }
+  .ag-select { padding: 12px 14px; font-size: 0.95rem; }
+}
+
+@media(max-width: 480px) {
+  .ag-premium-layout { padding: 0.5rem; }
+  .ag-premium-box { padding: 1rem; max-width: 100%; width: 95%; bottom: 5px; }
+  .ag-premium-box h2 { font-size: 1.3rem; margin-bottom: 0.8rem; }
+  .ag-form-group { margin-bottom: 1rem; }
+}
+
+/* =========================================
+   HERO BAR (Horizontal Layout)
+   ========================================= */
+.hero-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid var(--primary-orange);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  width: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.location-group {
+  flex: 1;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.widget-title {
+  color: #fff;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 4px;
+  font-weight: 300; /* Thinner, more luxurious */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.2rem;
+}
+
+.widget-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Reduced gap between elements */
+}
+
+.custom-select-wrapper {
+  position: relative;
+  user-select: none;
+  width: 100%;
+}
+
+.custom-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 1.2rem 1.5rem;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.custom-select:hover,
+.custom-select.active {
+  border-color: var(--primary-orange);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.select-icon {
+  color: var(--primary-orange);
+  transition: transform 0.3s ease;
+}
+
+.custom-select.active .select-icon {
+  transform: rotate(180deg);
+}
+
+.custom-options {
+  position: absolute;
+  display: block;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(5, 5, 5, 0.9); /* Black transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--primary-orange);
+  border-radius: 8px;
+  margin-top: 8px;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.custom-options.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.custom-option {
+  padding: 1.2rem 1.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+}
+
+.custom-option:last-child {
+  border-bottom: none;
+}
+
+.custom-option:hover {
+  background-color: var(--primary-orange);
+  color: #fff;
+}
+
+.widget-btn {
+  width: 100%;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  padding: 1.2rem 1.5rem;
+}
+
+.widget-btn-outline {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  padding: 1.2rem 1.5rem;
+}
+
+
+/* Fire Embers Animation */
+.fire-spark-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  pointer-events: none;
+  z-index: 6;
+  overflow: visible;
+}
+
+.ember {
+  position: absolute;
+  bottom: -40px;
+  width: 6px;
+  height: 6px;
+  background: #ff5e00;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff5e00, 0 0 20px #ff9d00;
+  opacity: 0;
+  filter: blur(1px);
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--fly-y)) translateX(var(--fly-x)) scale(0);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+  <!-- =========================================
+       NEW PREMIUM HEADER (DUNWOODY STYLE)
+       ========================================= -->
+  <header class="ag-main-header">
+    <!-- TOP TIER -->
+    <div class="ag-top-bar">
+      <div class="ag-top-bar-container container">
+        <div class="ag-social-icons">
+          <!-- Facebook -->
+          <a href="#"><svg viewBox="0 0 320 512"><path d="M279.1 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.4 0 225.4 0c-73.22 0-121.1 44.38-121.1 124.7v70.62H22.89V288h81.39v224h100.2V288z"/></svg></a>
+          <!-- Instagram -->
+          <a href="#"><svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+          <!-- X -->
+          <a href="#"><svg viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+          <!-- Youtube -->
+          <a href="#"><svg viewBox="0 0 576 512"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/></svg></a>
+          <!-- Tiktok -->
+          <a href="#"><svg viewBox="0 0 448 512"><path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"/></svg></a>
+        </div>
+        <div class="ag-top-links">
+          <a href="#" class="ag-top-link">Join Rewards</a>
+          <a href="#" class="ag-top-link">Choose Location</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- MAIN NAVBAR -->
+    <div class="ag-navbar">
+      <div class="ag-nav-container container">
+        
+        <div class="ag-mobile-menu-toggle" id="ag-mobile-toggle">
+          <span></span><span></span><span></span>
+        </div>
+
+        <nav class="ag-nav-left">
+          <a href="#" class="ag-nav-link">MENU</a>
+          <a href="#" class="ag-nav-link">HAPPENINGS</a>
+          <a href="#" class="ag-nav-link">TO-GO</a>
+          <a href="#" class="ag-nav-link">EVENTS</a>
+          <a href="#" class="ag-nav-link">LOCATIONS</a>
+        </nav>
+
+        <a href="https://adegagaucha.com/" class="ag-logo-wrapper">
+          <img src="https://adegagaucha.com/wp-content/uploads/2023/11/logo.png" alt="Adega Gaucha">
+        </a>
+
+        <nav class="ag-nav-right">
+          <a href="#" class="ag-nav-link">NEWS</a>
+          <a href="#" class="ag-nav-link">ABOUT US</a>
+          <a href="#" class="ag-nav-link">REWARDS</a>
+          <a href="#" class="btn-reservations">RESERVATIONS</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!-- MOBILE SLIDE-OUT MENU -->
+  <div class="ag-mobile-drawer" id="ag-mobile-drawer">
+    <div class="ag-drawer-header">
+      <img src="https://adegagaucha.com/wp-content/uploads/2023/11/logo.png" alt="Adega Gaucha" class="ag-drawer-logo">
+      <div class="ag-drawer-close" id="ag-drawer-close">&times;</div>
+    </div>
+    <nav class="ag-drawer-nav">
+      <a href="#">MENU</a>
+      <a href="#">HAPPENINGS</a>
+      <a href="#">TO-GO</a>
+      <a href="#">EVENTS</a>
+      <a href="#">LOCATIONS</a>
+      <a href="#">NEWS</a>
+      <a href="#">ABOUT US</a>
+      <a href="#">REWARDS</a>
+      <a href="#" class="ag-drawer-btn">RESERVATIONS</a>
+    </nav>
+    <div class="ag-drawer-footer">
+      <a href="#">Join Rewards</a>
+      <a href="#">Choose Location</a>
+      <div class="ag-drawer-socials">
+        <!-- Re-use simple icons here if needed, or leave text -->
+      </div>
+    </div>
+  </div>
+  <div class="ag-drawer-overlay" id="ag-drawer-overlay"></div>
+
+  <!-- NEW SPLIT-SCREEN HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-bg-overlay"></div>
+    <video autoplay loop muted playsinline class="hero-bg-video">
+      <source src="https://new.adegagaucha.com/wp-content/uploads/2024/09/Adega_Gaucha_Web_intro_2_5MB.mp4" type="video/mp4">
+    </video>
+    
+    <!-- Adega Gaucha Premium Hero Content -->
+    <div class="ag-premium-layout">
+      
+      <!-- Fire Embers Container -->
+      <div class="fire-spark-container" id="ember-container"></div>
+
+      <!-- Central Reservation Box -->
+      <div class="ag-premium-box">
+        <div class="ag-box-content">
+          <h2>RESERVE A TABLE</h2>
+          
+          <div class="ag-form-group">
+            <label>Choose Your Location</label>
+            <div class="ag-dropdown-wrapper" id="ag-custom-dropdown">
+              <div class="ag-select-trigger">
+                <span id="ag-selected-text">Orlando</span>
+                <div class="ag-arrow">▼</div>
+              </div>
+              <div class="ag-options-container">
+                <div class="ag-option" data-value="orlando">Orlando</div>
+                <div class="ag-option" data-value="kissimmee">Kissimmee</div>
+                <div class="ag-option" data-value="deerfieldbeach">Deerfield Beach</div>
+              </div>
+              <input type="hidden" id="ag-location-value" value="orlando">
+            </div>
+          </div>
+
+          <button class="ag-btn-primary" onclick="window.open('https://adegagaucha.com/reservations/' + document.getElementById('ag-location-value').value, '_blank')">
+            FIND A TABLE <span>➔</span>
+          </button>
+
+          <a href="https://adegagaucha.com/group-dining/" target="_blank" class="ag-btn-secondary">
+            HOST AN EVENT FOR 20+ GUESTS <span>➔</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Custom Dropdown Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+    // Fire Ember Generation
+    const emberContainer = document.getElementById('ember-container');
+    if (emberContainer) {
+      for (let i = 0; i < 250; i++) {
+        const ember = document.createElement('div');
+        ember.classList.add('ember');
+        
+        // Randomize starting X position (center-weighted)
+        const left = 50 + (Math.random() - 0.5) * 60;
+        ember.style.left = left + '%';
+        
+        // Randomize animation variables
+        const flyY = -300 - Math.random() * 450 + 'px';
+        const flyX = (Math.random() - 0.5) * 650 + 'px';
+        const duration = 0.3 + Math.random() * 0.4 + 's';
+        const delay = Math.random() * 0.1 + 's';
+        
+        ember.style.setProperty('--fly-y', flyY);
+        ember.style.setProperty('--fly-x', flyX);
+        ember.style.animation = `flyUp ${duration} cubic-bezier(0.2, 0.8, 0.2, 1) ${delay} forwards`;
+        
+        // Color variation (orange to yellow)
+        if (Math.random() > 0.6) {
+          ember.style.background = '#ffb300';
+          ember.style.boxShadow = '0 0 10px #ffb300, 0 0 20px #fff';
+        }
+        
+        emberContainer.appendChild(ember);
+      }
+    }
+      const dropdown = document.getElementById('ag-custom-dropdown');
+      if (!dropdown) return;
+      const trigger = dropdown.querySelector('.ag-select-trigger');
+      const optionsContainer = dropdown.querySelector('.ag-options-container');
+      const options = dropdown.querySelectorAll('.ag-option');
+      const selectedText = document.getElementById('ag-selected-text');
+      const hiddenInput = document.getElementById('ag-location-value');
+
+      // Toggle dropdown
+      trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        trigger.classList.toggle('open');
+        optionsContainer.classList.toggle('open');
+      });
+
+      // Handle option selection
+      options.forEach(option => {
+        option.addEventListener('click', function(e) {
+          e.stopPropagation();
+          // Update text and value
+          selectedText.textContent = this.textContent;
+          hiddenInput.value = this.dataset.value;
+          
+          // Remove selected class from all and add to clicked
+          options.forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          
+          // Close dropdown
+          trigger.classList.remove('open');
+          optionsContainer.classList.remove('open');
+        });
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target)) {
+          trigger.classList.remove('open');
+          optionsContainer.classList.remove('open');
+        }
+      });
+      // Toggle mobile menu drawer
+      const mobileToggle = document.getElementById('ag-mobile-toggle');
+      const mobileDrawer = document.getElementById('ag-mobile-drawer');
+      const drawerClose = document.getElementById('ag-drawer-close');
+      const drawerOverlay = document.getElementById('ag-drawer-overlay');
+
+      function openDrawer() {
+        mobileDrawer.classList.add('active');
+        drawerOverlay.classList.add('active');
+      }
+
+      function closeDrawer() {
+        mobileDrawer.classList.remove('active');
+        drawerOverlay.classList.remove('active');
+      }
+
+      if(mobileToggle) mobileToggle.addEventListener('click', openDrawer);
+      if(drawerClose) drawerClose.addEventListener('click', closeDrawer);
+      if(drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+    });
+  </script>
+</body>
+</html>
+

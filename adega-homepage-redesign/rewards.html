@@ -1,0 +1,505 @@
+<!-- ================================================================= -->
+<!-- ADEGA GAUCHA - PREMIUM MEMBERS REWARDS SECTION                    -->
+<!-- ================================================================= -->
+
+<!-- Premium Fonts Loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<div id="adega-rewards-section" class="adegagaucha-section">
+  <style>
+    #adega-rewards-section {
+      /* Brand Color Tokens & Variables */
+      --brand-orange: #F68625;
+      --bg-dark: #050505;
+      --text-light: #FFF9F5;
+      --text-muted: rgba(255, 249, 245, 0.7);
+      --font-heading: 'Oswald', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-jost: 'Jost', sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      
+      /* Layout & Aesthetics (Clean deep black background with full viewport width) */
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: var(--font-body);
+      width: 100%;
+      padding: 6rem 2rem;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Clean box reset for Page Builder integration */
+    #adega-rewards-section * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Container alignment with standard layouts */
+    #adega-rewards-section .rewards-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* PREMIUM CARD WITH DOUBLE OUTLINE SYSTEM */
+    #adega-rewards-section .rewards-card {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+      transition: all 0.6s var(--ease-out-expo);
+    }
+
+    /* Inner hairline margin border (Contracts and turns Orange on hover) */
+    #adega-rewards-section .rewards-card::after {
+      content: '';
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      pointer-events: none;
+      transition: all 0.6s var(--ease-out-expo);
+      z-index: 1;
+    }
+
+    /* Hover States */
+    #adega-rewards-section .rewards-card:hover {
+      background: rgba(255, 255, 255, 0.025);
+      border-color: rgba(246, 134, 37, 0.25);
+      box-shadow: 0 45px 90px rgba(0, 0, 0, 0.85);
+    }
+
+    #adega-rewards-section .rewards-card:hover::after {
+      inset: 10px;
+      border-color: rgba(246, 134, 37, 0.35);
+    }
+
+    /* LEFT SIDE: CONTENT */
+    #adega-rewards-section .rewards-content {
+      flex: 1.2;
+      position: relative;
+      z-index: 2;
+    }
+
+    #adega-rewards-section .rew-subtitle {
+      font-family: var(--font-jost);
+      font-size: 0.95rem;
+      color: var(--brand-orange);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+    }
+
+    #adega-rewards-section .rew-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    #adega-rewards-section .rew-title .highlight {
+      color: var(--brand-orange);
+    }
+
+    #adega-rewards-section .rew-desc {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.1vw, 1.15rem);
+      line-height: 1.8;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 2.8rem;
+      max-width: 90%;
+    }
+
+    /* PREMIUM BADGES */
+    #adega-rewards-section .rew-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 3rem;
+    }
+
+    #adega-rewards-section .rew-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 50px;
+      font-family: var(--font-jost);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: #fff;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    #adega-rewards-section .rewards-card:hover .rew-badge {
+      border-color: rgba(246, 134, 37, 0.35);
+      background: rgba(246, 134, 37, 0.06);
+      color: var(--brand-orange);
+    }
+
+    /* PREMIUM BRAND BUTTON (Consistent with order banner) */
+    #adega-rewards-section .btn-join {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.1rem 3.4rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-light);
+      background-color: var(--brand-orange);
+      border: 2px solid var(--brand-orange);
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(246, 134, 37, 0.22);
+      transition: all 0.5s var(--ease-out-expo);
+    }
+
+    #adega-rewards-section .btn-join:hover {
+      background-color: transparent;
+      border-color: #ffffff;
+      color: #ffffff;
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(246, 134, 37, 0.4), 0 0 15px rgba(255, 255, 255, 0.15);
+    }
+
+    /* RIGHT SIDE: LUXURY PERKS PANEL */
+    #adega-rewards-section .rewards-panel {
+      flex: 1;
+      padding: 3rem;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      position: relative;
+      z-index: 2;
+      transition: all 0.6s var(--ease-out-expo);
+    }
+
+    #adega-rewards-section .rewards-card:hover .rewards-panel {
+      border-color: rgba(246, 134, 37, 0.15);
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    #adega-rewards-section .panel-title {
+      font-family: var(--font-heading);
+      font-size: 1.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1rem;
+    }
+
+    #adega-rewards-section .panel-list {
+      list-style: none;
+    }
+
+    #adega-rewards-section .panel-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    #adega-rewards-section .panel-item:last-child {
+      margin-bottom: 0;
+    }
+
+    #adega-rewards-section .panel-icon-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    #adega-rewards-section .rewards-card:hover .panel-icon-wrap {
+      background: var(--brand-orange);
+      box-shadow: 0 0 15px rgba(246, 134, 37, 0.45);
+      border-color: var(--brand-orange);
+    }
+
+    #adega-rewards-section .panel-icon {
+      width: 16px;
+      height: 16px;
+      color: #fff;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    #adega-rewards-section .panel-text {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-weight: 300;
+      padding-top: 4px;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    #adega-rewards-section .rewards-card:hover .panel-text {
+      color: #fff;
+    }
+
+    /* ================================================================= */
+    /* ROBUST SCROLL ENTRANCE ANIMATIONS (Dual Converging Parallax)      */
+    /* ================================================================= */
+    #adega-rewards-section .rewards-content {
+      transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      will-change: transform, opacity;
+    }
+
+    #adega-rewards-section .rewards-panel {
+      transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      will-change: transform, opacity;
+    }
+
+    /* Inactive slider positions */
+    #adega-rewards-section:not(.visible) .rewards-content {
+      opacity: 0 !important;
+      transform: translateX(-100px) !important; /* Slide in from left */
+    }
+
+    #adega-rewards-section:not(.visible) .rewards-panel {
+      opacity: 0 !important;
+      transform: translateX(100px) !important; /* Slide in from right */
+    }
+
+    /* Active positions */
+    #adega-rewards-section.visible .rewards-content {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+
+    #adega-rewards-section.visible .rewards-panel {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+
+    /* ================================================================= */
+    /* RESPONSIVE STYLES (Mobile & Tablet)                               */
+    /* ================================================================= */
+    @media (max-width: 1024px) {
+      #adega-rewards-section {
+        padding: 5rem 1.5rem;
+      }
+
+      #adega-rewards-section .rewards-card {
+        flex-direction: column;
+        padding: 4rem 3rem;
+        gap: 3.5rem;
+      }
+
+      #adega-rewards-section .rewards-card::after {
+        inset: 12px;
+      }
+
+      #adega-rewards-section .rewards-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      #adega-rewards-section .rew-desc {
+        max-width: 100%;
+      }
+
+      #adega-rewards-section .rew-badges {
+        justify-content: center;
+      }
+
+      #adega-rewards-section .rewards-panel {
+        width: 100%;
+        padding: 2.5rem;
+      }
+
+      /* Inactive vertical reveal on tablets/mobile instead of horizontal slide */
+      #adega-rewards-section:not(.visible) .rewards-content {
+        transform: translateY(40px) !important;
+      }
+
+      #adega-rewards-section:not(.visible) .rewards-panel {
+        transform: translateY(60px) !important;
+      }
+
+      #adega-rewards-section.visible .rewards-content,
+      #adega-rewards-section.visible .rewards-panel {
+        transform: translateY(0) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #adega-rewards-section .rewards-card {
+        padding: 3rem 1.5rem;
+      }
+      
+      #adega-rewards-section .rewards-card::after {
+        inset: 8px;
+      }
+
+      #adega-rewards-section .rew-title {
+        font-size: 2.6rem;
+      }
+
+      #adega-rewards-section .rewards-panel {
+        padding: 2rem 1.2rem;
+      }
+
+      #adega-rewards-section .panel-text {
+        font-size: 0.95rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      #adega-rewards-section {
+        padding: 4rem 1rem;
+      }
+
+      #adega-rewards-section .rew-title {
+        font-size: 2.2rem;
+      }
+
+      #adega-rewards-section .rew-badge {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+      }
+
+      #adega-rewards-section .btn-join {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <div class="rewards-container">
+    
+    <!-- THE PREMIUM REWARDS ENVELOPE -->
+    <div class="rewards-card">
+      
+      <!-- LEFT COLUMN: Content Reveal -->
+      <div class="rewards-content">
+        <div class="rew-subtitle">Member Rewards</div>
+        <h2 class="rew-title">Join The <span class="highlight">Rewards</span> Program</h2>
+        <p class="rew-desc">
+          Earn points every time you dine and unlock member-only perks with clear, simple rules. Enjoy the true luxury of the Gaucho experience.
+        </p>
+        
+        <!-- Premium Staggered Badges -->
+        <div class="rew-badges">
+          <div class="rew-badge">50-Point Welcome Bonus</div>
+          <div class="rew-badge">Earn On Every Visit</div>
+          <div class="rew-badge">Redeem Your Favorites</div>
+        </div>
+        
+        <!-- Premium CTA Link -->
+        <a href="https://www.toasttab.com/adega-gaucha-8204-crystal-clear/rewardsSignup" class="btn-join" target="_blank" rel="noopener noreferrer">Join Now</a>
+      </div>
+
+      <!-- RIGHT COLUMN: Luxury Perks Panel -->
+      <div class="rewards-panel">
+        <h3 class="panel-title">What You Get</h3>
+        <ul class="panel-list">
+          <!-- Perks Item 1 -->
+          <li class="panel-item">
+            <div class="panel-icon-wrap">
+              <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div class="panel-text">Earn points automatically at Orlando, Kissimmee, and Deerfield Beach.</div>
+          </li>
+          <!-- Perks Item 2 -->
+          <li class="panel-item">
+            <div class="panel-icon-wrap">
+              <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div class="panel-text">Redeem your favorites with no complicated tiers or restrictions.</div>
+          </li>
+          <!-- Perks Item 3 -->
+          <li class="panel-item">
+            <div class="panel-icon-wrap">
+              <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div class="panel-text">Get early access to exclusive member events, wine tastings, and chef specials.</div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Elementor safety check to prevent conflict in builder view
+      const isEditMode = document.body.classList.contains('elementor-editor-active') || 
+                         (typeof elementorFrontend !== 'undefined' && elementorFrontend.isEditMode());
+      
+      const rewardsSection = document.querySelector('#adega-rewards-section');
+      if (!rewardsSection) return;
+
+      if (isEditMode) {
+        // Render in full visible layout instantly during editing
+        rewardsSection.classList.add('visible');
+        return;
+      }
+
+      // Intersection Observer options for scroll triggered animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+
+      const rewardsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            rewardsSection.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      rewardsObserver.observe(rewardsSection);
+
+      // Fallback fallback delay trigger in case of observer restrictions
+      setTimeout(() => {
+        if (!rewardsSection.classList.contains('visible')) {
+          rewardsSection.classList.add('visible');
+        }
+      }, 1200);
+    });
+  </script>
+</div>
+<!-- ================================================================= -->

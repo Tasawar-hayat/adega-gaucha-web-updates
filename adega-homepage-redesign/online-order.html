@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adega Gaucha | Premium Online Order</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@300;400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* =========================================
+       ADEGA GAUCHA - PREMIUM DARK MODE THEME
+       ========================================= */
+    :root {
+      --primary-orange: #F68625;
+      --dark-bg: #050505;
+      --font-heading: 'Oswald', 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--dark-bg);
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      /* Subtle ambient glow in background */
+      background: radial-gradient(circle at 20% 30%, rgba(246, 134, 37, 0.05) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 70%, rgba(246, 134, 37, 0.03) 0%, transparent 50%),
+                  var(--dark-bg);
+    }
+
+    /* =========================================
+       ONLINE ORDER SECTION
+       ========================================= */
+    .order-section {
+      width: 100%;
+      padding: 6rem 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .order-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* PREMIUM GLASSMORPHIC CARD */
+    .order-card {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      animation: fadeUp 1s ease 0.2s forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .order-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: 20px;
+      pointer-events: none;
+      box-shadow: inset 0 0 30px rgba(246, 134, 37, 0);
+      transition: box-shadow 0.5s ease;
+      z-index: 1;
+    }
+
+    .order-card:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(246, 134, 37, 0.3);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+    }
+
+    .order-card:hover::before {
+      box-shadow: inset 0 0 30px rgba(246, 134, 37, 0.05);
+    }
+
+    /* LEFT SIDE: PHONE GIF */
+    .order-image-wrap {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .order-image-wrap img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      object-fit: contain;
+      /* Premium glowing shadow for the phone */
+      filter: drop-shadow(0 20px 40px rgba(246, 134, 37, 0.2));
+      animation: ag-floatPhone 6s ease-in-out infinite;
+      transform-origin: center;
+      transition: filter 0.5s ease;
+    }
+
+    .order-card:hover .order-image-wrap img {
+      filter: drop-shadow(0 30px 50px rgba(246, 134, 37, 0.4));
+    }
+
+    @keyframes ag-floatPhone {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* RIGHT SIDE: CONTENT */
+    .order-content {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      z-index: 2;
+    }
+
+    .order-subtitle {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      color: var(--primary-orange);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    .order-title {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .order-title .highlight {
+      color: var(--primary-orange);
+      background: linear-gradient(90deg, #F68625, #ffb067);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .order-desc {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      max-width: 90%;
+    }
+
+    .order-desc strong {
+      font-weight: 600;
+      color: var(--primary-orange);
+    }
+
+    /* STACKED BUTTONS */
+    .order-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .btn-order {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      color: #fff !important;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Arrow */
+    .btn-order::after {
+      content: '→';
+      opacity: 0;
+      transform: translateX(-15px);
+      transition: all 0.4s ease;
+      font-size: 1.2rem;
+      color: var(--primary-orange);
+    }
+
+    /* Glow Sweep */
+    .btn-order::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, rgba(246, 134, 37, 0.1) 0%, rgba(246, 134, 37, 0.0) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .btn-order:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      border-left: 3px solid var(--primary-orange);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(246, 134, 37, 0.05);
+      transform: translateX(5px);
+    }
+
+    .btn-order:hover::before {
+      opacity: 1;
+    }
+
+    .btn-order:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* KEYFRAMES */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVENESS */
+    @media(max-width: 1024px) {
+      .order-card {
+        flex-direction: column;
+        padding: 4rem 3rem;
+        gap: 3rem;
+      }
+      .order-image-wrap img { max-width: 280px; }
+      .order-content {
+        align-items: center;
+        text-align: center;
+      }
+      .order-desc { max-width: 100%; }
+      .btn-order { transform: none !important; }
+    }
+
+    @media(max-width: 768px) {
+      .order-section { padding: 4rem 1.5rem; }
+      .order-card { padding: 3rem 1.5rem; border-radius: 16px; }
+      .order-title { font-size: 2.8rem; }
+      .order-actions { max-width: 100%; }
+      .btn-order { padding: 0.8rem 1.2rem; font-size: 0.8rem; }
+    }
+    
+    @media(max-width: 480px) {
+      .order-title { font-size: 2.4rem; }
+      .order-desc { font-size: 1.05rem; }
+      .order-image-wrap img { max-width: 220px; }
+      .btn-order::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ONLINE ORDER SECTION -->
+  <section class="order-section">
+    <div class="order-container">
+      
+      <!-- THE PREMIUM CARD -->
+      <div class="order-card">
+        
+        <!-- LEFT SIDE: APP GIF -->
+        <div class="order-image-wrap">
+          <img src="https://adegagaucha.com/wp-content/uploads/2025/05/Order-Brazilian-steakhouse-Orlando-Kissimmee-Deerfield-Beach-new.gif" alt="Adega Gaucha Online Order App">
+        </div>
+
+        <!-- RIGHT SIDE: CONTENT -->
+        <div class="order-content">
+          <div class="order-subtitle">Online Order</div>
+          <h2 class="order-title"><span class="highlight">Order</span> Today!</h2>
+          <p class="order-desc">
+            Enjoy the authentic flavors of <strong>Adega Gaucha</strong> from the comfort of your home. Whether you're craving our perfectly grilled <strong>Brazilian churrasco</strong> or our fresh gourmet sides, we've got you covered. Place your order today and have a delicious <strong>Brazilian steakhouse</strong> meal delivered straight to your door.
+          </p>
+          
+          <!-- STACKED BUTTONS -->
+          <div class="order-actions">
+            <a href="https://www.getsauce.com/order/adega-gaucha" class="btn-order">Order Now Orlando</a>
+            <a href="https://www.getsauce.com/order/adega-gaucha-kissimmee/menu" class="btn-order">Order Now Kissimmee</a>
+            <a href="https://www.getsauce.com/order/adega-gaucha-deerfield/menu" class="btn-order">Order Now Deerfield Beach</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

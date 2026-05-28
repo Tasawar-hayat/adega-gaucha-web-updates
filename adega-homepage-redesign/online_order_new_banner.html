@@ -1,0 +1,387 @@
+<!-- ================================================================= -->
+<!-- ADEGA GAUCHA - PREMIUM ONLINE ORDER BANNER SECTION                -->
+<!-- ================================================================= -->
+
+<!-- Premium Fonts Loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<div id="adega-order-banner" class="adegagaucha-section">
+  <style>
+    #adega-order-banner {
+      /* Brand Color Tokens & Variables */
+      --brand-orange: #F68625;
+      --brand-gold: #c5a059;
+      --bg-dark: #0a0a08;
+      --text-light: #FFF9F5;
+      --text-muted: rgba(255, 249, 245, 0.7);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-sans: 'Inter', sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      
+      /* Layout & Aesthetics */
+      background: radial-gradient(circle at 75% 50%, rgba(246, 134, 37, 0.07) 0%, var(--bg-dark) 70%);
+      color: var(--text-light);
+      font-family: var(--font-sans);
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem;
+      box-sizing: border-box;
+    }
+
+    /* Clean box reset for Page Builder integration */
+    #adega-order-banner * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Container */
+    #adega-order-banner .banner-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: clamp(2rem, 5vw, 6rem);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Left Column - Plate Visual */
+    #adega-order-banner .plate-column {
+      flex: 1.2;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      overflow: visible;
+    }
+
+    #adega-order-banner .plate-image {
+      width: 125%;
+      max-width: 700px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(-20px 30px 40px rgba(0, 0, 0, 0.85));
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    /* Right Column - Brand Text Content */
+    #adega-order-banner .content-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-right: 1.5rem;
+    }
+
+    /* Title Styles (High contrast serif) */
+    #adega-order-banner .title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+    }
+
+    /* Subtitle Styles (High contrast luxury serif) */
+    #adega-order-banner .subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.5vw, 2.1rem); /* Optimized luxury sizing */
+      color: var(--brand-orange);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.5px;
+      text-transform: none; /* Maintains natural capital casing */
+    }
+
+    /* Description Paragraph Styles */
+    #adega-order-banner .description {
+      font-family: var(--font-sans);
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      color: var(--text-muted);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+
+    /* ================================================================= */
+    /* THREE BUTTON GRID SYSTEM (Orlando, Kissimmee, Deerfield Beach)     */
+    /* ================================================================= */
+    #adega-order-banner .order-buttons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      width: 100%;
+      max-width: 620px;
+      margin-top: 1.5rem;
+    }
+
+    #adega-order-banner .order-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.1rem 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 500; /* Sophisticated light-to-medium font weight */
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-light);
+      background-color: var(--brand-orange);
+      border: 2px solid var(--brand-orange);
+      border-radius: 4px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(246, 134, 37, 0.22);
+      transition: all 0.5s var(--ease-out-expo);
+    }
+
+    /* Animated Gold-to-Orange Hover */
+    #adega-order-banner .order-button:hover {
+      background-color: transparent;
+      border-color: #ffffff; /* Turns sleek White on hover */
+      color: #ffffff;
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(246, 134, 37, 0.4), 0 0 15px rgba(255, 255, 255, 0.15);
+    }
+
+    /* Large button spans full row below the first two, centered */
+    #adega-order-banner .order-button.large-btn {
+      grid-column: span 2;
+      width: 100%;
+    }
+
+    /* ================================================================= */
+    /* ROBUST ENTRANCE ANIMATIONS (Works beautifully inside Elementor)  */
+    /* ================================================================= */
+    
+    /* 1. Base states for animated items */
+    #adega-order-banner .plate-image {
+      transition: transform 2.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 2.4s ease-out !important;
+      will-change: transform, opacity;
+    }
+    
+    #adega-order-banner .animate-text {
+      transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      will-change: transform, opacity;
+    }
+    
+    #adega-order-banner .animate-btn {
+      transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      will-change: transform, opacity;
+    }
+    
+    /* 2. INACTIVE STATES (Before scrolled into view) */
+    #adega-order-banner:not(.visible) .plate-image {
+      opacity: 0 !important;
+      transform: translateX(-150%) rotate(-65deg) !important; /* Deep left slide with rotation */
+    }
+    
+    #adega-order-banner:not(.visible) .animate-text {
+      opacity: 0 !important;
+      transform: translateX(-100px) !important; /* Slide in from left */
+    }
+    
+    #adega-order-banner:not(.visible) .animate-btn {
+      opacity: 0 !important;
+      transform: scale(0.94) !important; /* Fade and scale zoom */
+    }
+    
+    /* 3. ACTIVE STATES (Triggered when scrolled into view) */
+    #adega-order-banner.visible .plate-image {
+      opacity: 1 !important;
+      transform: translateX(-22%) rotate(0deg) !important;
+    }
+    
+    #adega-order-banner.visible .animate-text {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+    
+    #adega-order-banner.visible .animate-btn {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+    }
+    
+    /* Cascading delays for staggered premium look */
+    #adega-order-banner .delay-1 { transition-delay: 0.15s !important; }
+    #adega-order-banner .delay-2 { transition-delay: 0.4s !important; }
+    #adega-order-banner .delay-3 { transition-delay: 0.65s !important; }
+    #adega-order-banner .delay-4 { transition-delay: 0.9s !important; }
+
+    /* ================================================================= */
+    /* RESPONSIVE STYLES (Mobile & Tablet)                               */
+    /* ================================================================= */
+    @media (max-width: 991px) {
+      #adega-order-banner {
+        min-height: auto;
+        padding: 5rem 1.5rem;
+        background: radial-gradient(circle at 50% 30%, rgba(246, 134, 37, 0.08) 0%, var(--bg-dark) 80%);
+      }
+
+      #adega-order-banner .banner-container {
+        flex-direction: column;
+        gap: 3.5rem;
+        text-align: center;
+      }
+
+      /* Center plate on mobile viewports */
+      #adega-order-banner .plate-column {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+      }
+
+      #adega-order-banner .plate-image {
+        width: 90%;
+        max-width: 420px;
+        filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
+      }
+
+      /* Mobile entrance states */
+      #adega-order-banner:not(.visible) .plate-image {
+        transform: translateX(-150px) rotate(-35deg) !important;
+      }
+
+      #adega-order-banner.visible .plate-image {
+        transform: translateX(0) rotate(0deg) !important;
+      }
+
+      /* Center text content under plate on mobile */
+      #adega-order-banner .content-column {
+        width: 100%;
+        align-items: center;
+        padding-right: 0;
+      }
+
+      #adega-order-banner .description {
+        margin-inline: auto;
+        margin-bottom: 2.2rem;
+      }
+      
+      /* Stack all buttons vertically on mobile for perfect touch targets */
+      #adega-order-banner .order-buttons-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        margin-inline: auto;
+        gap: 1rem;
+      }
+
+      #adega-order-banner .order-button.large-btn {
+        grid-column: span 1;
+      }
+      
+      #adega-order-banner .order-button {
+        width: 100%;
+        padding: 1.1rem 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #adega-order-banner {
+        padding: 4rem 1rem;
+      }
+      
+      #adega-order-banner .banner-container {
+        gap: 2.5rem;
+      }
+
+      #adega-order-banner .title {
+        margin-bottom: 0.2rem;
+      }
+
+      #adega-order-banner .subtitle {
+        margin-bottom: 1.4rem;
+      }
+      
+      #adega-order-banner .description {
+        line-height: 1.75;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+
+  <div class="banner-container">
+    <!-- LEFT COLUMN: Plate visual sliding/rotating in from left -->
+    <div class="plate-column">
+      <img class="plate-image" src="https://adegagaucha.com/wp-content/uploads/2026/05/Lamb_Chop-removebg-preview-1-scaled.png" alt="Adega Gaucha Premium Lamb Chop" loading="lazy" decoding="async">
+    </div>
+
+    <!-- RIGHT COLUMN: Premium aligned branding text content -->
+    <div class="content-column">
+      <h2 class="title animate-text delay-1">Order Online</h2>
+      <h3 class="subtitle animate-text delay-2">Enjoy artisanal cuisine wherever you are</h3>
+      
+      <p class="description animate-text delay-3">
+        Each meal is carefully prepared using the same high-quality ingredients and attention to detail you'd expect in our dining room. Whether you are ordering a quiet dinner for two or a feast for the family, Adega Gaucha's elevated cuisine is just a few clicks away.
+      </p>
+      
+      <!-- Three Location Buttons (Orlando & Kissimmee on top, Deerfield Beach centered below) -->
+      <div class="order-buttons-grid animate-btn delay-4">
+        <a href="https://www.getsauce.com/order/adega-gaucha" class="order-button" target="_blank" rel="noopener noreferrer">Order Orlando</a>
+        <a href="https://www.getsauce.com/order/adega-gaucha-kissimmee/menu" class="order-button" target="_blank" rel="noopener noreferrer">Order Kissimmee</a>
+        <a href="https://www.getsauce.com/order/adega-gaucha-deerfield/menu" class="order-button large-btn" target="_blank" rel="noopener noreferrer">Order Deerfield Beach</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Elementor safety check to avoid hanging or interfering with edit mode
+      const isEditMode = document.body.classList.contains('elementor-editor-active') || 
+                         (typeof elementorFrontend !== 'undefined' && elementorFrontend.isEditMode());
+      
+      const banner = document.querySelector('#adega-order-banner');
+      if (!banner) return;
+
+      if (isEditMode) {
+        // Instantly show content in page builder without scroll triggers
+        banner.classList.add('visible');
+        return;
+      }
+
+      // Scroll Entrance Animation Trigger using IntersectionObserver
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+
+      const bannerObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            banner.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      bannerObserver.observe(banner);
+
+      // Fallback: trigger animation after a short delay in case observer is blocked
+      setTimeout(() => {
+        if (!banner.classList.contains('visible')) {
+          banner.classList.add('visible');
+        }
+      }, 1200);
+    });
+  </script>
+</div>
+<!-- ================================================================= -->

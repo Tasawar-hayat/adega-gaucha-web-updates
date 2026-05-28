@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adega Gaucha | Premium Highlight</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@300;400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* =========================================
+       ADEGA GAUCHA - PREMIUM DARK MODE THEME
+       ========================================= */
+    :root {
+      --primary-orange: #F68625;
+      --dark-bg: #050505;
+      --font-heading: 'Oswald', 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--dark-bg);
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =========================================
+       FEATURED HIGHLIGHT SECTION
+       ========================================= */
+    /* Container for the parallax effect */
+    .highlight-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 8rem 0;
+    }
+
+    /* Background layer fixed for parallax across all devices */
+    .highlight-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('https://adegagaucha.com/wp-content/uploads/2025/07/carrusel_1_Banner_2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      z-index: 0;
+    }
+
+    /* Dark Overlay with subtle orange tint */
+    .highlight-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to right, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.85) 40%, rgba(246,134,37,0.05) 100%);
+      z-index: 1;
+    }
+
+    /* FOREGROUND CONTENT */
+    .highlight-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5rem;
+      width: 100%;
+    }
+
+    /* LEFT SIDE: TEXT */
+    .highlight-content {
+      flex: 1;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      animation: ag-fadeUp 1s ease forwards;
+    }
+
+    .highlight-subtitle {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      color: var(--primary-orange);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+    }
+
+    .highlight-title {
+      font-family: var(--font-heading);
+      font-size: 4.5rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+
+    .highlight-title .highlight {
+      color: var(--primary-orange);
+      background: linear-gradient(90deg, #F68625, #ffb067);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .highlight-desc {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* PREMIUM BUTTON */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem 2.8rem;
+      background: rgba(255, 255, 255, 0.02);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--primary-orange);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary-orange);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(246, 134, 37, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .btn-outline:hover::before {
+      opacity: 1;
+    }
+
+    /* RIGHT SIDE: SKEWER IMAGE (Glassmorphic Frame) */
+    .highlight-image {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: ag-fadeUp 1s ease 0.3s forwards;
+      opacity: 0;
+    }
+
+    .highlight-image::before {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      background: rgba(246, 134, 37, 0.05);
+      border-radius: 12px;
+      transform: translate(20px, 20px);
+      z-index: -1;
+      border: 1px solid rgba(246, 134, 37, 0.2);
+    }
+
+    .highlight-image img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.5s ease;
+    }
+
+    .highlight-image:hover img {
+      transform: translate(-5px, -5px);
+    }
+
+    @keyframes ag-fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 1024px) {
+      .highlight-title { font-size: 3.5rem; }
+      .highlight-container { padding: 0 3rem; gap: 4rem; }
+      .highlight-image::before { display: none; }
+    }
+
+    @media(max-width: 768px) {
+      .highlight-wrapper {
+        padding: 6rem 0;
+        /* Maintained fixed background for parallax on mobile as requested */
+      }
+      .highlight-overlay {
+        /* Keep the overlay consistent on mobile but fade slightly more so text is legible over the center image */
+        background: linear-gradient(to bottom, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.85) 50%, rgba(5,5,5,0.6) 100%);
+      }
+      .highlight-container {
+        flex-direction: column-reverse; /* Keep stacked, side-by-side doesn't fit on mobile */
+        text-align: center;
+        gap: 3rem;
+        padding: 0 1.5rem;
+      }
+      .highlight-content {
+        align-items: center;
+      }
+      .highlight-subtitle { justify-content: center; }
+      .highlight-title {
+        font-size: 3rem;
+      }
+      .highlight-desc {
+        max-width: 100%;
+      }
+    }
+    
+    @media(max-width: 480px) {
+      .highlight-title { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FEATURED HIGHLIGHT SECTION -->
+  <section class="highlight-wrapper">
+    
+    <!-- PARALLAX BACKGROUND LAYER -->
+    <div class="highlight-bg"></div>
+    <div class="highlight-overlay"></div>
+
+    <!-- FOREGROUND CONTENT -->
+    <div class="highlight-container">
+      
+      <!-- LEFT SIDE: TEXT -->
+      <div class="highlight-content">
+        <div class="highlight-subtitle">Brazilian Steakhouse</div>
+        <h2 class="highlight-title">Keeping Alive<br><span class="highlight">A Tradition</span></h2>
+        <p class="highlight-desc">
+          At Adega Gaucha, we offer expertly grilled premium cuts of meat, capturing the authentic flavors of Brazilian churrasco. Alongside our gourmet table with fresh vegetables, signature salads, carpaccio and traditional sides, we create a perfect balance of flavors. Come experience the essence of Brazil with our Gaucho-style meats and warm hospitality for an unforgettable dining experience.
+        </p>
+        <a href="https://adegagaucha.com/menu/" class="btn-outline">Our Menus</a>
+      </div>
+
+      <!-- RIGHT SIDE: SKEWER IMAGE -->
+      <div class="highlight-image">
+        <img src="https://adegagaucha.com/wp-content/uploads/2024/10/Menu_Adega_Gaucha_Lunch_Churrasco-1024x683.webp" alt="Authentic Churrasco Skewer">
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

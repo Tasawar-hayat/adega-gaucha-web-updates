@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Authentic Experience | Adega Gaucha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;600;700;800&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-orange: #F68625;
+      --dark-bg: #050505;
+      --font-heading: 'Oswald', 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-body);
+      background-color: var(--dark-bg);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .exp-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .exp-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .exp-title {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-subtitle {
+      font-size: 1.2rem;
+      color: var(--primary-orange);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* 3-COLUMN CARD GRID */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .exp-card {
+      position: relative;
+      border-radius: 20px;
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(246, 134, 37, 0.5);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3rem 2.5rem;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .exp-card.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hover States */
+    .exp-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      border-color: var(--primary-orange);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 40px rgba(246, 134, 37, 0.35);
+    }
+
+    /* Background Image Scaffolding */
+    .card-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+      transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .card-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.4) 60%, rgba(5,5,5,0.1) 100%);
+      z-index: -1;
+      transition: background 0.4s ease;
+    }
+
+    .exp-card:hover .card-bg {
+      transform: scale(1.1);
+    }
+
+    .exp-card:hover .card-overlay {
+      background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.2) 50%, rgba(246, 134, 37, 0.15) 100%);
+    }
+
+    /* Header & Animated Number (Bottom Left) */
+    .card-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      transition: transform 0.4s ease;
+      z-index: 2;
+    }
+
+    .card-counter {
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      font-weight: 800;
+      color: var(--primary-orange);
+      line-height: 1;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+
+    /* Hover Description Slide-Up */
+    .card-description-wrap {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      z-index: 2;
+    }
+
+    .card-description {
+      font-family: 'Jost', var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.85);
+      margin-top: 1.2rem;
+    }
+
+    .exp-card:hover .card-description-wrap {
+      max-height: 150px;
+      opacity: 1;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Centered Premium CTA */
+    .exp-cta-container {
+      text-align: center;
+      margin-top: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .exp-cta-container.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .exp-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #000;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 1.1rem 2.8rem;
+      border-radius: 50px;
+      border: 2px solid #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      text-decoration: none;
+    }
+
+    .exp-cta-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: var(--primary-orange);
+      color: var(--primary-orange);
+      box-shadow: 0 15px 35px rgba(246, 134, 37, 0.25);
+    }
+
+    .exp-cta-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    .exp-cta-btn:hover svg {
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 900px) {
+      .experience-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .exp-card {
+        height: 400px;
+        padding: 2.5rem 2rem;
+      }
+      .card-counter {
+        font-size: 4rem;
+      }
+      .card-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="experience-component">
+    <div class="exp-container">
+      
+      <div class="exp-header">
+        <h2 class="exp-title">The Authentic Experience</h2>
+        <p class="exp-subtitle">Discover the heart of Southern Brazil</p>
+      </div>
+
+      <div class="experience-grid" id="experience-grid">
+        
+        <!-- Card 1: Prime Cuts -->
+        <div class="exp-card" style="transition-delay: 0.1s;">
+          <div class="card-bg" style="background-image: url('https://adegagaucha.com/wp-content/uploads/2024/04/lamb-chops-at-adega-gaucha.png');"></div>
+          <div class="card-overlay"></div>
+          
+          <div class="card-footer">
+            <div class="card-counter" data-target="17" data-prefix="+">+0</div>
+            <h3 class="card-title">Premium Meat Cuts</h3>
+          </div>
+          
+          <div class="card-description-wrap">
+            <p class="card-description">From our signature Picanha to succulent pork chops and tender lamb, perfectly seasoned and cooked to your liking.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Wine -->
+        <div class="exp-card" style="transition-delay: 0.2s;">
+          <div class="card-bg" style="background-image: url('https://adegagaucha.com/wp-content/uploads/2024/10/Adega_Gaucha_Wine_Insignia_Usa-.webp');"></div>
+          <div class="card-overlay"></div>
+          
+          <div class="card-footer">
+            <div class="card-counter" data-target="200" data-prefix="+">+0</div>
+            <h3 class="card-title">Hand-Picked Wines</h3>
+          </div>
+          
+          <div class="card-description-wrap">
+            <p class="card-description">Indulge in a curated collection of local and international award-winning vintages selected to elevate your dining journey.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Seating -->
+        <div class="exp-card" style="transition-delay: 0.3s;">
+          <div class="card-bg" style="background-image: url('https://adegagaucha.com/wp-content/uploads/2025/07/edit-39-scaled-1.png');"></div>
+          <div class="card-overlay"></div>
+          
+          <div class="card-footer">
+            <div class="card-counter" data-target="250" data-prefix="+">+0</div>
+            <h3 class="card-title">Seating Capacity</h3>
+          </div>
+          
+          <div class="card-description-wrap">
+            <p class="card-description">A perfect setting for large private events, corporate functions, or cozy, intimate group gatherings.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Centered Premium CTA -->
+      <div class="exp-cta-container" id="exp-cta">
+        <a href="https://adegagaucha.com/reservations/" class="exp-cta-btn">
+          Book Your Experience
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const counters = document.querySelectorAll('.card-counter');
+      const speed = 50; // Controls the speed of counting upwards
+
+      const animateCounter = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        const prefix = counter.getAttribute('data-prefix') || '';
+        let count = 0;
+        const step = target / speed;
+
+        const update = () => {
+          count += step;
+          if (count < target) {
+            counter.innerText = prefix + Math.ceil(count);
+            requestAnimationFrame(update);
+          } else {
+            counter.innerText = prefix + target;
+          }
+        };
+        update();
+      };
+
+      // IntersectionObserver for cards to fade-in and animate numbers
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            card.classList.add('reveal');
+            
+            // Wait for entry animation to complete before playing numbers
+            const counter = card.querySelector('.card-counter');
+            if (counter) {
+              setTimeout(() => {
+                animateCounter(counter);
+              }, 400);
+            }
+            obs.unobserve(card);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      const cards = document.querySelectorAll('.exp-card');
+      cards.forEach(card => observer.observe(card));
+
+      const cta = document.getElementById('exp-cta');
+      if (cta) observer.observe(cta);
+    });
+  </script>
+
+</body>
+</html>

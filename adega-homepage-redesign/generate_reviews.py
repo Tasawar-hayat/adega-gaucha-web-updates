@@ -1,0 +1,303 @@
+﻿# -*- coding: utf-8 -*-
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adega Gaucha | Premium Reviews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Barlow:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; background: #000;">
+
+<!-- ADEGA GAUCHA - REVIEWS SECTION (ELEMENTOR OPTIMIZED) -->
+
+<div id="adega-reviews-v3" class="adegagaucha-section">
+    <style>
+        #adega-reviews-v3 {
+            --black: #000000;
+            --charcoal: #0a0a08;
+            --charcoal-mid: #121212;
+            --charcoal-lt: #1a1a1a;
+            --gold: #F68625;
+            --brand-orange: #F68625;
+            --cream: #FFF9F5;
+            --cream-dim: rgba(255, 249, 245, 0.7);
+            --red-ot: #DA3743;
+            --green-ta: #00AA6C;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Barlow', sans-serif;
+            --font-label: 'Barlow Condensed', sans-serif;
+            --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-full: 9999px;
+            --gutter: 24px;
+
+            background: var(--black);
+            color: var(--cream);
+            font-family: var(--font-body);
+            overflow: hidden;
+            position: relative;
+        }
+
+        #adega-reviews-v3 * { box-sizing: border-box; }
+
+        #adega-reviews-v3 .container { width: min(1280px, 100% - var(--gutter) * 2); margin-inline: auto; }
+
+        #adega-reviews-v3 .label { font-family: var(--font-label); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-orange); display: block; margin-bottom: 0.5rem; }
+
+        #adega-reviews-v3 .section-title { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; color: var(--cream); margin: 0; }
+        #adega-reviews-v3 .section-title em { font-style: italic; color: var(--brand-orange); }
+
+        #adega-reviews-v3 .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s var(--ease-expo), transform 0.8s var(--ease-expo); will-change: transform, opacity; }
+        #adega-reviews-v3 .reveal.visible { opacity: 1; transform: none; }
+        #adega-reviews-v3 .delay-1 { transition-delay: 0.1s; }
+        #adega-reviews-v3 .delay-2 { transition-delay: 0.2s; }
+
+        #adega-reviews-v3 .reviews { padding: clamp(80px, 12vw, 140px) 0; position: relative; }
+
+        #adega-reviews-v3 .reviews-header { text-align: center; margin-bottom: clamp(3rem, 5vw, 4rem); display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+
+        #adega-reviews-v3 .reviews-rating-summary { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1.8rem; background: rgba(246, 134, 37, 0.07); border: 1px solid rgba(246, 134, 37, 0.2); border-radius: var(--radius-full); }
+
+        #adega-reviews-v3 .reviews-rating-num { font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: var(--brand-orange); line-height: 1; }
+
+        #adega-reviews-v3 .reviews-stars { color: var(--brand-orange); font-size: 1rem; letter-spacing: 0.1em; }
+
+        #adega-reviews-v3 .reviews-count { font-family: var(--font-label); font-size: 0.72rem; color: rgba(245, 240, 232, 0.5); letter-spacing: 0.1em; }
+
+        #adega-reviews-v3 .reviews-track-wrap { position: relative; overflow: hidden; margin: 0; }
+
+        #adega-reviews-v3 .reviews-track-wrap::before, #adega-reviews-v3 .reviews-track-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none; }
+        #adega-reviews-v3 .reviews-track-wrap::before { left: 0; background: linear-gradient(90deg, var(--black), transparent); }
+        #adega-reviews-v3 .reviews-track-wrap::after { right: 0; background: linear-gradient(-90deg, var(--black), transparent); }
+
+        #adega-reviews-v3 .reviews-track { display: flex; gap: 1.5rem; padding: 1rem 0; cursor: grab; user-select: none; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        #adega-reviews-v3 .reviews-track::-webkit-scrollbar { display: none; }
+        #adega-reviews-v3 .reviews-track.dragging { cursor: grabbing; }
+
+        #adega-reviews-v3 .review-card { flex: 0 0 calc((100% - 3rem) / 3); background: var(--charcoal); border-radius: 16px; padding: 2rem; border: 2px solid var(--platform-color, rgba(246, 134, 37, 0.4)); display: flex; flex-direction: column; gap: 1.2rem; transition: transform 0.3s, box-shadow 0.3s; }
+        #adega-reviews-v3 .review-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); }
+
+        #adega-reviews-v3 .review-card[data-platform="opentable"] { --platform-color: var(--red-ot); }
+        #adega-reviews-v3 .review-card[data-platform="tripadvisor"] { --platform-color: var(--green-ta); }
+        #adega-reviews-v3 .review-card[data-platform="google"] { border: 2px solid transparent; background: linear-gradient(var(--charcoal), var(--charcoal)) padding-box, linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335) border-box; }
+
+        #adega-reviews-v3 .review-platform { display: flex; align-items: center; justify-content: space-between; }
+        #adega-reviews-v3 .platform-brand { display: flex; align-items: center; gap: 0.6rem; }
+        #adega-reviews-v3 .platform-logo { height: 22px; width: auto; display: block; }
+        #adega-reviews-v3 .platform-name { font-family: var(--font-label); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cream); }
+        
+        #adega-reviews-v3 .review-text { font-size: 0.95rem; font-weight: 300; color: rgba(245, 240, 232, 0.78); line-height: 1.7; font-style: italic; margin: 0; }
+        #adega-reviews-v3 .review-text::before { content: '\\201C'; color: var(--gold); font-size: 1.4rem; vertical-align: -0.3em; margin-right: 0.1em; }
+        #adega-reviews-v3 .review-text::after { content: '\\201D'; color: var(--gold); font-size: 1.4rem; vertical-align: -0.3em; margin-left: 0.1em; }
+
+        #adega-reviews-v3 .review-author { display: flex; align-items: center; gap: 0.8rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(246, 134, 37, 0.12); }
+        #adega-reviews-v3 .reviewer-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, rgba(246,134,37,0.5), var(--gold)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1rem; color: var(--black); font-weight: 600; flex-shrink: 0; }
+        #adega-reviews-v3 .reviewer-info { display: flex; flex-direction: column; }
+        #adega-reviews-v3 .reviewer-name { font-family: var(--font-label); font-size: 0.78rem; font-weight: 600; color: var(--cream); letter-spacing: 0.05em; }
+        #adega-reviews-v3 .reviewer-date { font-size: 0.7rem; color: rgba(245, 240, 232, 0.4); }
+
+        #adega-reviews-v3 .reviews-controls { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; }
+        #adega-reviews-v3 .reviews-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(246, 134, 37, 0.35); color: var(--brand-orange); display: flex; align-items: center; justify-content: center; transition: all 0.3s; background: none; cursor: pointer; }
+        #adega-reviews-v3 .reviews-btn:hover { background: rgba(246, 134, 37, 0.12); border-color: var(--brand-orange); }
+
+        @media (max-width: 1024px) {
+            #adega-reviews-v3 .review-card { flex: 0 0 calc((100% - 1.5rem) / 2); }
+        }
+
+        @media (max-width: 768px) { 
+            #adega-reviews-v3 .reviews-btn { display: none; } 
+            #adega-reviews-v3 .review-card { flex: 0 0 85%; }
+        }
+    </style>
+
+    <section class="reviews" id="reviews" aria-label="Guest reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <span class="label reveal">Guest Reviews</span>
+                <h2 class="section-title reveal delay-1">The Adega <em>Experience</em></h2>
+                <div class="reviews-rating-summary reveal delay-2">
+                    <div class="reviews-rating-num">5.0</div>
+                    <div>
+                        <div class="reviews-stars" aria-label="5.0 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="reviews-count">Join 2,500+ Happy Guests</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-track-wrap">
+                <div class="reviews-track" id="adegaReviewsTrack" role="list">
+                    <!-- OpenTable Review -->
+                    <article class="review-card" data-platform="opentable" role="listitem">
+                        <div class="review-platform">
+                            <div class="platform-brand">
+                                <img src="https://adegagaucha.com/wp-content/uploads/2026/05/opentable-icon.svg" alt="OpenTable" class="platform-logo">
+                                <span class="platform-name">Open Table</span>
+                            </div>
+                            <div class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                        <p class="review-text">Absolutely outstanding. The picanha was the best I've ever had — perfectly seasoned, carved tableside with real showmanship. Service was impeccable and the salad bar alone is worth the visit.</p>
+                        <div class="review-author">
+                            <div class="reviewer-avatar">M</div>
+                            <div class="reviewer-info">
+                                <span class="reviewer-name">Michael R.</span>
+                                <span class="reviewer-date">April 2025</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Google Review -->
+                    <article class="review-card" data-platform="google" role="listitem">
+                        <div class="review-platform">
+                            <div class="platform-brand">
+                                <svg class="platform-logo" viewBox="0 0 68 22" xmlns="http://www.w3.org/2000/svg" aria-label="Google" role="img">
+                                    <text x="0" y="16" fill="#4285F4" font-size="13" font-weight="700" font-family="Arial,sans-serif">G</text>
+                                    <text x="10" y="16" fill="#EA4335" font-size="13" font-weight="700" font-family="Arial,sans-serif">o</text>
+                                    <text x="19" y="16" fill="#FBBC05" font-size="13" font-weight="700" font-family="Arial,sans-serif">o</text>
+                                    <text x="28" y="16" fill="#4285F4" font-size="13" font-weight="700" font-family="Arial,sans-serif">g</text>
+                                    <text x="36" y="16" fill="#34A853" font-size="13" font-weight="700" font-family="Arial,sans-serif">l</text>
+                                    <text x="42" y="16" fill="#EA4335" font-size="13" font-weight="700" font-family="Arial,sans-serif">e</text>
+                                </svg>
+                            </div>
+                            <div class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                        <p class="review-text">Best Brazilian steakhouse in South Florida, hands down. We celebrated our anniversary here and they made the night truly special. The lamb chops and filet mignon were incredible.</p>
+                        <div class="review-author">
+                            <div class="reviewer-avatar">S</div>
+                            <div class="reviewer-info">
+                                <span class="reviewer-name">Sarah L.</span>
+                                <span class="reviewer-date">March 2025</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- TripAdvisor Review -->
+                    <article class="review-card" data-platform="tripadvisor" role="listitem">
+                        <div class="review-platform">
+                            <div class="platform-brand">
+                                <img src="https://adegagaucha.com/wp-content/uploads/2026/05/Updated-Logo-of-Trip-Advisor.svg" alt="TripAdvisor" class="platform-logo">
+                            </div>
+                            <div class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                        <p class="review-text">Visited with a group of 10 for a birthday dinner. The staff was incredibly accommodating, the food was non-stop and delicious, and the atmosphere was vibrant without being too loud.</p>
+                        <div class="review-author">
+                            <div class="reviewer-avatar">J</div>
+                            <div class="reviewer-info">
+                                <span class="reviewer-name">James T.</span>
+                                <span class="reviewer-date">February 2025</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Second OpenTable Review -->
+                    <article class="review-card" data-platform="opentable" role="listitem">
+                        <div class="review-platform">
+                            <div class="platform-brand">
+                                <img src="https://adegagaucha.com/wp-content/uploads/2026/05/opentable-icon.svg" alt="OpenTable" class="platform-logo">
+                                <span class="platform-name">Open Table</span>
+                            </div>
+                            <div class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                        <p class="review-text">Every single meat was cooked perfectly. The bottom sirloin and bacon-wrapped chicken were my favorites. The salad bar had over 50 items and everything was fresh.</p>
+                        <div class="review-author">
+                            <div class="reviewer-avatar">A</div>
+                            <div class="reviewer-info">
+                                <span class="reviewer-name">Amanda K.</span>
+                                <span class="reviewer-date">January 2025</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="reviews-controls">
+                <button class="reviews-btn" id="adegaReviewsPrev" aria-label="Previous review">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="reviews-btn" id="adegaReviewsNext" aria-label="Next review">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            const scope = document.querySelector('#adega-reviews-v3');
+            if (!scope) return;
+
+            const revealObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            scope.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+            const track = scope.querySelector('#adegaReviewsTrack');
+            if (!track) return;
+            const wrap = track.parentElement;
+            const cards = Array.from(track.querySelectorAll('.review-card'));
+            const prevBtn = scope.querySelector('#adegaReviewsPrev');
+            const nextBtn = scope.querySelector('#adegaReviewsNext');
+
+            // Infinite loop clone
+            cards.forEach(c => track.appendChild(c.cloneNode(true)));
+
+            let currentScroll = 0;
+            let speed = 0.5;
+            let isHovering = false, isDragging = false, isAnimating = false;
+            let startX = 0, scrollStart = 0;
+
+            function animate() {
+                if (!isHovering && !isDragging && !isAnimating) {
+                    currentScroll += speed;
+                    if (currentScroll >= track.scrollWidth / 2) currentScroll = 0;
+                    track.scrollLeft = currentScroll;
+                } else if (!isAnimating) {
+                    currentScroll = track.scrollLeft;
+                }
+                requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
+
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                if (isAnimating) return;
+                isAnimating = true;
+                const cardWidth = cards[0].offsetWidth + 24; // width + gap
+                track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                setTimeout(() => { isAnimating = false; currentScroll = track.scrollLeft; }, 600);
+            });
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                if (isAnimating) return;
+                isAnimating = true;
+                const cardWidth = cards[0].offsetWidth + 24; // width + gap
+                track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                setTimeout(() => { isAnimating = false; currentScroll = track.scrollLeft; }, 600);
+            });
+
+            track.addEventListener('mousedown', e => {
+                isDragging = true; startX = e.pageX; scrollStart = track.scrollLeft; track.classList.add('dragging');
+            });
+            document.addEventListener('mousemove', e => {
+                if (!isDragging) return; track.scrollLeft = scrollStart - (e.pageX - startX);
+            });
+            document.addEventListener('mouseup', () => {
+                isDragging = false; track.classList.remove('dragging');
+            });
+
+            wrap.addEventListener('mouseenter', () => isHovering = true);
+            wrap.addEventListener('mouseleave', () => { isHovering = false; currentScroll = track.scrollLeft; });
+        })();
+    </script>
+</div>
+</body>
+</html>
+'''
+
+with open('reviews.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
