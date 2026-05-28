@@ -541,7 +541,7 @@ html, body {
   display: flex;
   gap: 0;
   background: var(--charcoal-lt);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1.5px solid #ffffff; /* Solid White Capsule Border as requested */
   border-radius: 30px; /* Highly rounded capsule container matching your image */
   padding: 0;
   overflow: hidden; /* Automatically rounds the first and last tabs' corners exactly as highlighted! */
@@ -560,7 +560,7 @@ html, body {
   cursor: pointer;
   transition: background 0.3s var(--ease-expo), color 0.3s ease;
   white-space: nowrap;
-  border-right: 1px solid rgba(255,255,255,0.08); /* Divider line between locations */
+  border-right: 1.5px solid #ffffff; /* Solid White Divider lines between locations */
   border-radius: 0 !important; /* Force overflow container rounding */
 }
 
@@ -568,7 +568,7 @@ html, body {
   border-right: none;
 }
 
-.rv-tab:hover { color: var(--cream); }
+.rv-tab:hover { color: var(--white); }
 
 .rv-tab.active {
   background: var(--orange);
