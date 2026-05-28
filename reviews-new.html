@@ -627,6 +627,7 @@ html, body {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-muted);
+  white-space: nowrap; /* Forces "SORT BY" to be strictly on a single line */
 }
 
 .rv-sort-select {
@@ -947,28 +948,29 @@ html, body {
 .rv-btn-load {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
   background: transparent;
-  border: 1px solid var(--orange-border);
-  border-radius: var(--r-full);
-  color: var(--orange);
+  border: 1.5px solid var(--orange); /* Clean thin brand orange border */
+  border-radius: 0px; /* Rectangular sharp corners from your screenshot */
+  color: var(--white); /* White text from your screenshot */
   font-family: var(--font-label);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 14px 32px;
+  padding: 16px 40px;
   cursor: pointer;
-  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .rv-btn-load:hover {
-  background: var(--orange-bg);
+  background: var(--orange); /* Fill solid orange on hover */
   border-color: var(--orange);
-  color: var(--orange-light);
+  color: var(--black); /* Sleek black high-contrast text on hover */
 }
 
-.rv-btn-load svg { transition: transform 0.25s ease; }
+.rv-btn-load svg { transition: transform 0.3s ease; }
 .rv-btn-load:hover svg { transform: rotate(180deg); }
 
 /* ─── LOADING / EMPTY STATES ──────────────────────────────────── */
