@@ -333,6 +333,33 @@ html, body {
   transition: color 0.3s ease, transform 0.3s var(--ease-expo), text-shadow 0.3s ease;
 }
 
+/* Dynamic Vertical Rolling Date Scroller */
+.rv-date-scroller {
+  display: inline-block;
+  vertical-align: top;
+  height: clamp(25px, 3vw, 40px);
+  overflow: hidden;
+  position: relative;
+}
+
+.rv-date-scroll-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.rv-date-scroll-track.rolled {
+  transform: translateY(-50%);
+}
+
+.rv-date-item {
+  display: block;
+  height: clamp(25px, 3vw, 40px);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
 .rv-stat-label {
   font-family: 'Jost', 'Inter', sans-serif;
   font-size: 11px;
@@ -2255,13 +2282,28 @@ html, body {
     document.getElementById('hero-rating-text').textContent =
       `${(s.averageRating || 4.8).toFixed(1)} stars · ${(s.totalReviews || 0).toLocaleString()} verified guest reviews`;
 
-    // Immediately render today's dynamic date to avoid any loading placeholders
+    // Immediately calculate and render rolling dynamic date to avoid loading placeholders
     const today = new Date();
-    const updated = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const prev = new Date();
+    prev.setDate(today.getDate() - 2); // 2 days ago
+
+    const options = { month: 'short', day: 'numeric', year: 'numeric' };
+    const currentDateStr = today.toLocaleDateString('en-US', options);
+    const prevDateStr = prev.toLocaleDateString('en-US', options);
+
     const statUpdatedEl = document.getElementById('stat-updated');
-    if (statUpdatedEl) statUpdatedEl.textContent = updated;
+    if (statUpdatedEl) {
+      statUpdatedEl.innerHTML = `
+        <span class="rv-date-scroller">
+          <span class="rv-date-scroll-track" id="date-scroll-track">
+            <span class="rv-date-item">${prevDateStr}</span>
+            <span class="rv-date-item">${currentDateStr}</span>
+          </span>
+        </span>
+      `;
+    }
     const lastUpdatedEl = document.getElementById('last-updated');
-    if (lastUpdatedEl) lastUpdatedEl.textContent = updated;
+    if (lastUpdatedEl) lastUpdatedEl.textContent = currentDateStr;
 
     /* Stat bar - animate on intersection */
     const observer = new IntersectionObserver((entries) => {
@@ -2269,6 +2311,13 @@ html, body {
         if (!entry.isIntersecting) return;
         animateCount(document.getElementById('stat-rating'),  s.averageRating || 4.8, true);
         animateCount(document.getElementById('stat-reviews'), s.totalReviews || 0,    false);
+        
+        // Trigger the dynamic vertical rolling scroller animation
+        setTimeout(() => {
+          const track = document.getElementById('date-scroll-track');
+          if (track) track.classList.add('rolled');
+        }, 300);
+
         observer.disconnect();
       });
     }, { threshold: 0.3 });
