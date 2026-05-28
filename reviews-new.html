@@ -1,0 +1,2495 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Guest Reviews - Adega Gaucha",
+  "description": "Real-time guest reviews from Adega Gaucha locations across Florida",
+  "url": "https://adegagaucha.com/reviews/",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "LocalBusiness",
+        "name": "Adega Gaucha Orlando",
+        "url": "https://adegagaucha.com/locations/orlando",
+        "servesCuisine": "Brazilian Steakhouse",
+        "priceRange": "$$$",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "1100",
+          "bestRating": "5"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "LocalBusiness",
+        "name": "Adega Gaucha Kissimmee",
+        "url": "https://adegagaucha.com/locations/kissimmee",
+        "servesCuisine": "Brazilian Steakhouse",
+        "priceRange": "$$$",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.7",
+          "reviewCount": "870",
+          "bestRating": "5"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "LocalBusiness",
+        "name": "Adega Gaucha Deerfield Beach",
+        "url": "https://adegagaucha.com/locations/deerfieldbeach",
+        "servesCuisine": "Brazilian Steakhouse",
+        "priceRange": "$$$",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "920",
+          "bestRating": "5"
+        }
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+/* ─── RESET & TOKENS ──────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:        #08080a;
+  --charcoal:     #111110;
+  --charcoal-mid: #1a1a16;
+  --charcoal-lt:  #242420;
+  --charcoal-card:#1e1e1a;
+  --orange:       #F68625;
+  --orange-light: #ffaa5e;
+  --orange-dim:   #d86c12;
+  --orange-pale:  #ffdfc2;
+  --orange-bg:    rgba(246,134,37,0.08);
+  --orange-border: rgba(246,134,37,0.35);
+  --cream:        #f5f0e8;
+  --cream-dim:    #ece6d8;
+  --white:        #ffffff;
+  --text-muted:   rgba(245,240,232,0.55);
+  --text-sub:     rgba(245,240,232,0.75);
+  --google:       #4285F4;
+  --star-gold:    #F68625; /* Changed to Adega Orange #F68625 */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Barlow', sans-serif;
+  --font-label:   'Barlow Condensed', sans-serif;
+  --ease-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+  --container:    1320px;
+  --gutter:       clamp(20px, 4vw, 48px);
+  --r-sm:         4px;
+  --r-md:         10px;
+  --r-lg:         20px;
+  --r-full:       9999px;
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--charcoal);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── WORDPRESS/ELEMENTOR OVERRIDES ──────────────────────────── */
+.taptap-logo-wrapper,.taptap-nav-wrapper,.taptap-header-wrapper,
+.taptap-mobile-menu-wrapper,.taptap-menu-button-wrapper,
+.taptap-search-button-wrapper,.taptap-search-wrapper,
+.taptap-search-background,.taptap-search-overlay,
+.taptap-by-bonfire,.taptap-by-bonfire-horizontal,
+.elementor-location-footer { display: none !important; }
+
+html, body {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+.taptap-main,.taptap-main-inner,.taptap-main-inner-inner,
+.site,.site-content,.site-primary,main,.entry-content {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* ─── LAYOUT HELPERS ──────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section-label {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+/* ─── HERO ────────────────────────────────────────────────────── */
+.rv-hero {
+  position: relative;
+  min-height: 72vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--black);
+  padding-top: 70px !important; /* Added 70px gap from very top */
+}
+
+.rv-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to top, rgba(8,8,10,0.97) 0%, rgba(8,8,10,0.62) 45%, rgba(8,8,10,0.35) 100%),
+    linear-gradient(160deg, rgba(246,134,37,0.06) 0%, transparent 60%),
+    url('https://adegagaucha.com/wp-content/uploads/2024/11/S_Adega_A_La_Carte.webp') center / cover no-repeat;
+  transform: scale(1.04);
+  transition: transform 8s ease-out;
+}
+
+.rv-hero.loaded .rv-hero-bg { transform: scale(1); }
+
+.rv-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-block: clamp(64px, 10vh, 120px);
+}
+
+.rv-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.rv-hero-tag span { font-family: var(--font-label); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); }
+
+.rv-hero-tag::before,
+.rv-hero-tag::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 40px;
+  background: var(--orange-dim);
+}
+
+.rv-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 7vw, 90px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.rv-hero h1 em {
+  font-style: italic;
+  color: var(--orange-light);
+}
+
+.rv-hero-intro {
+  font-size: clamp(15px, 1.5vw, 18px);
+  font-weight: 300;
+  color: var(--text-sub);
+  max-width: 640px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+.rv-hero-stars {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rv-hero-stars-icons {
+  display: flex;
+  gap: 4px;
+}
+
+.rv-hero-stars-icons svg { width: 20px; height: 20px; }
+
+.rv-hero-stars-text {
+  font-family: var(--font-label);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.rv-hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  right: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.5;
+}
+
+.rv-hero-scroll span { font-family: var(--font-label); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; writing-mode: vertical-rl; color: var(--cream); }
+
+.rv-hero-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--orange), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(0.8); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ─── STATS BAR ───────────────────────────────────────────────── */
+.rv-stats {
+  background: var(--charcoal-mid);
+  border-top: 1px solid var(--orange-border);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.rv-stats-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding-block: 0;
+}
+
+.rv-stat {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.rv-stat:last-child { border-right: none; }
+
+.rv-stat:hover { background: var(--orange-bg); box-shadow: inset 0 0 20px rgba(246,134,37,0.1); }
+
+.rv-stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  color: var(--orange-light);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.rv-stat-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.rv-stat-icon {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  opacity: 0.15;
+}
+
+/* ─── REPUTATION SECTION ──────────────────────────────────────── */
+.rv-reputation {
+  padding-block: clamp(60px, 8vw, 100px);
+  background: var(--charcoal);
+}
+
+.rv-reputation-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+.rv-reputation-copy { max-width: 540px; }
+
+.rv-reputation-copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--cream);
+  margin-block: 14px 20px;
+}
+
+.rv-reputation-copy h2 em { font-style: italic; color: var(--orange-light); }
+
+.rv-reputation-copy p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-sub);
+  line-height: 1.75;
+}
+
+.rv-reputation-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.rv-highlight {
+  background: var(--charcoal-lt);
+  border: 1px solid var(--orange-border);
+  border-radius: var(--r-md);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.3s ease, transform 0.3s var(--ease-expo);
+}
+
+.rv-highlight:hover {
+  border-color: var(--orange);
+  transform: translateY(-3px);
+}
+
+.rv-highlight-icon { font-size: 22px; line-height: 1; }
+
+.rv-highlight-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--orange-light);
+}
+
+.rv-highlight-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── FILTER + REVIEWS ────────────────────────────────────────── */
+.rv-reviews-section {
+  background: var(--charcoal-mid);
+  padding-block: clamp(56px, 7vw, 88px);
+}
+
+/* Filter Strip */
+.rv-filter-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.rv-filter-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 300;
+  color: var(--cream);
+  margin-top: 10px;
+}
+
+.rv-filter-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--charcoal-lt);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-full);
+  padding: 4px;
+}
+
+.rv-tab {
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: var(--r-full);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+  white-space: nowrap;
+}
+
+.rv-tab:hover { color: var(--cream); }
+
+.rv-tab.active {
+  background: var(--orange);
+  color: var(--black);
+}
+
+/* Sort + Count bar */
+.rv-results-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.rv-results-count {
+  font-family: var(--font-label);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rv-results-count strong {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.rv-sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rv-sort-label {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rv-sort-select {
+  appearance: none;
+  background: var(--charcoal-lt);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-sm);
+  color: var(--cream);
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 8px 28px 8px 12px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F68625' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.2s ease;
+}
+
+.rv-sort-select:focus { outline: none; border-color: var(--orange); }
+
+/* Source Badge */
+.rv-source-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(66,133,244,0.12);
+  border: 1px solid rgba(66,133,244,0.25);
+  border-radius: var(--r-full);
+  padding: 5px 12px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7aabff;
+}
+
+.rv-source-badge svg { width: 14px; height: 14px; }
+
+/* ─── REVIEW CARDS GRID ───────────────────────────────────────── */
+.rv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.rv-card {
+  background: var(--charcoal-card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.3s ease, transform 0.3s var(--ease-expo), box-shadow 0.3s ease;
+  
+  position: relative;
+  overflow: hidden;
+}
+
+.rv-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--orange-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rv-card:hover {
+  border-color: var(--orange-border);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(246,134,37,0.15);
+}
+
+.rv-card:hover::before { opacity: 1; }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Card Header */
+.rv-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rv-card-reviewer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.rv-avatar {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange-dim), var(--orange));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.rv-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rv-reviewer-info { min-width: 0; }
+
+.rv-reviewer-name {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rv-reviewer-meta {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.rv-google-icon {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.rv-google-icon svg { width: 18px; height: 18px; }
+
+/* Stars */
+.rv-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.rv-stars svg { width: 15px; height: 15px; }
+
+/* Card Body */
+.rv-card-body { flex: 1; }
+
+.rv-card-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-sub);
+  line-height: 1.72;
+}
+
+.rv-card-text.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rv-read-more {
+  margin-top: 8px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.rv-read-more:hover { color: var(--orange-light); }
+
+/* Card Footer */
+.rv-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.rv-visit-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--orange-bg);
+  border: 1px solid var(--orange-border);
+  border-radius: var(--r-full);
+  padding: 4px 10px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.rv-location-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* ─── FEATURED REVIEW (Spotlight) ────────────────────────────── */
+.rv-featured {
+  margin-bottom: 32px;
+  padding: 36px 40px;
+  background: linear-gradient(135deg, var(--charcoal-lt) 0%, var(--charcoal-card) 100%);
+  border: 1px solid var(--orange-border);
+  border-radius: var(--r-lg);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.rv-featured-badge {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: var(--orange);
+  color: var(--black);
+  font-family: var(--font-label);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+}
+
+.rv-featured-quote {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 300;
+  color: var(--orange-dim);
+  line-height: 0.8;
+  user-select: none;
+}
+
+.rv-featured-content { min-width: 0; }
+
+.rv-featured-stars { margin-bottom: 14px; }
+
+.rv-featured-text {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.rv-featured-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.rv-featured-name {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--orange-light);
+}
+
+.rv-featured-meta {
+  font-family: var(--font-label);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.rv-white-divider {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.rv-sep { color: var(--orange-dim); }
+
+/* ─── LOAD MORE ───────────────────────────────────────────────── */
+.rv-load-more-wrap {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.rv-btn-load {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid var(--orange-border);
+  border-radius: var(--r-full);
+  color: var(--orange);
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.rv-btn-load:hover {
+  background: var(--orange-bg);
+  border-color: var(--orange);
+  color: var(--orange-light);
+}
+
+.rv-btn-load svg { transition: transform 0.25s ease; }
+.rv-btn-load:hover svg { transform: rotate(180deg); }
+
+/* ─── LOADING / EMPTY STATES ──────────────────────────────────── */
+.rv-loading {
+  grid-column: 1 / -1;
+  padding: 64px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.rv-spinner {
+  width: 44px;
+  height: 44px;
+  border: 2px solid rgba(246,134,37,0.15);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.rv-loading-text {
+  font-family: var(--font-label);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rv-empty {
+  grid-column: 1 / -1;
+  padding: 64px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+}
+
+/* ─── SKELETON CARDS ──────────────────────────────────────────── */
+.rv-skeleton {
+  background: var(--charcoal-card);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--r-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rv-skel-line {
+  height: 12px;
+  background: linear-gradient(90deg, var(--charcoal-lt) 25%, rgba(255,255,255,0.05) 50%, var(--charcoal-lt) 75%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: shimmer 1.4s infinite;
+}
+
+.rv-skel-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--charcoal-lt);
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── WHY GUESTS RETURN (UPGRADED NEW AND UNIQUE CLASSICAL DESIGN) ──── */
+.rv-why {
+  padding-block: clamp(60px, 8vw, 100px);
+  background: var(--black); /* Clean pure dark background */
+  position: relative;
+  overflow: hidden;
+}
+.rv-why .section-label { color: var(--orange); }
+
+.rv-why-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+.rv-why-copy { max-width: 520px; }
+
+.rv-why-copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--cream);
+  margin-block: 14px 20px;
+}
+
+.rv-why-copy h2 em { font-style: italic; color: var(--orange-light); }
+
+.rv-why-copy p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-sub);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.rv-why-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Premium Floating Card Structure */
+.rv-pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 28px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--orange);
+  border-radius: 4px;
+  transition: all 0.5s var(--ease-expo) !important;
+  will-change: transform, opacity, background-color;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Kinetic outline frame overlay */
+.rv-pillar::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.01);
+  border-radius: 2px;
+  pointer-events: none;
+  transition: all 0.5s var(--ease-expo);
+  z-index: 1;
+}
+
+/* Hover Guarantees Text Remains Perfect White */
+.rv-pillar:hover {
+  background: rgba(246, 134, 37, 0.09) !important;
+  border-color: rgba(246, 134, 37, 0.25) !important;
+  border-left-color: #ffffff !important;
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.rv-pillar:hover::after {
+  inset: 4px;
+  border-color: rgba(246, 134, 37, 0.2);
+}
+
+.rv-pillar-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(246, 134, 37, 0.06);
+  border: 1px solid rgba(246, 134, 37, 0.15);
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+}
+
+.rv-pillar:hover .rv-pillar-icon {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.rv-pillar-icon .rv-icon {
+  margin: 0;
+  transition: all 0.4s ease;
+}
+
+.rv-pillar:hover .rv-pillar-icon .rv-icon {
+  background-color: var(--orange);
+  transform: scale(1.15);
+}
+
+.rv-pillar-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  color: #ffffff !important; /* Locks title to white */
+  margin-bottom: 6px;
+  transition: color 0.4s ease;
+}
+
+.rv-pillar:hover .rv-pillar-title {
+  color: var(--orange-light) !important;
+}
+
+.rv-pillar-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-sub) !important; /* Locks description text to creamy light white */
+  line-height: 1.65;
+  transition: color 0.4s ease;
+}
+
+.rv-pillar:hover .rv-pillar-text {
+  color: #ffffff !important;
+}
+
+/* ─── SCROLL ENTRANCE ANIMATIONS FOR WHY GUESTS RETURN ──────────────── */
+.rv-why .rv-why-copy {
+  transition: transform 1.8s var(--ease-expo), opacity 1.8s var(--ease-expo) !important;
+  will-change: transform, opacity;
+}
+
+.rv-why .rv-pillar {
+  transition: transform 1.5s var(--ease-expo), opacity 1.5s var(--ease-expo), background 0.4s ease, border-color 0.4s ease, transform 0.4s ease !important;
+  will-change: transform, opacity;
+}
+
+/* Inactive hidden states */
+.rv-why:not(.visible) .rv-why-copy {
+  opacity: 0 !important;
+  transform: translateX(-100px) !important;
+}
+
+.rv-why:not(.visible) .rv-pillar {
+  opacity: 0 !important;
+  transform: translateX(100px) !important;
+}
+
+/* Active entrance states */
+.rv-why.visible .rv-why-copy {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.rv-why.visible .rv-pillar {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+/* Staggered delay mapping */
+.rv-why .rv-pillar:nth-child(1) { transition-delay: 0.1s !important; }
+.rv-why .rv-pillar:nth-child(2) { transition-delay: 0.25s !important; }
+.rv-why .rv-pillar:nth-child(3) { transition-delay: 0.4s !important; }
+.rv-why .rv-pillar:nth-child(4) { transition-delay: 0.55s !important; }
+
+/* ─── LOCATION TRUST ──────────────────────────────────────────── */
+.rv-locations {
+  padding-block: clamp(60px, 8vw, 100px);
+  background: var(--charcoal);
+}
+
+.rv-locations-header { text-align: center; margin-bottom: 48px; }
+
+.rv-locations-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 300;
+  color: var(--cream);
+  margin-top: 14px;
+}
+
+.rv-loc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.rv-loc-card {
+  background: var(--charcoal-mid);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s var(--ease-expo);
+}
+
+.rv-loc-card:hover {
+  border-color: var(--orange-border);
+  transform: translateY(-6px) scale(1.02);
+}
+
+.rv-loc-header {
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.rv-loc-name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+
+.rv-loc-state {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.rv-loc-body { padding: 24px 28px; }
+
+.rv-loc-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.rv-loc-rating-val {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--orange-light);
+  line-height: 1;
+}
+
+.rv-loc-rating-right { display: flex; flex-direction: column; gap: 4px; }
+
+.rv-loc-count {
+  font-family: var(--font-label);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.rv-loc-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.rv-loc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.rv-loc-tag {
+  background: var(--charcoal-lt);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-full);
+  padding: 4px 10px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rv-loc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.rv-loc-link:hover { color: var(--orange-light); gap: 10px; }
+
+/* ─── LAST UPDATED STRIP ──────────────────────────────────────── */
+.rv-updated {
+  background: var(--charcoal-lt);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 16px 0;
+}
+
+.rv-updated-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.rv-updated-dot {
+  width: 6px; height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.rv-updated-text {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.rv-updated-text strong { color: var(--orange); font-weight: 600; }
+
+/* ─── CTA BAND ────────────────────────────────────────────────── */
+.rv-cta {
+  padding-block: clamp(64px, 8vw, 96px);
+  background: linear-gradient(160deg, var(--charcoal-mid) 0%, var(--black) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.rv-cta::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(246,134,37,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.rv-cta-inner { text-align: center; max-width: 640px; margin-inline: auto; position: relative; }
+
+.rv-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-block: 14px 16px;
+}
+
+.rv-cta h2 em { font-style: italic; color: var(--orange-light); }
+
+.rv-cta p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-sub);
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+.rv-cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.rv-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--orange);
+  color: var(--black);
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: var(--r-full);
+  text-decoration: none;
+  border: 2px solid var(--orange);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s var(--ease-expo), box-shadow 0.25s ease;
+}
+
+.rv-btn-primary:hover {
+  background: var(--orange-light);
+  border-color: var(--orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(246,134,37,0.3);
+}
+
+.rv-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--cream);
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border-radius: var(--r-full);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s var(--ease-expo);
+}
+
+.rv-btn-secondary:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.rv-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--orange-dim);
+  margin: 28px auto;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .rv-grid { grid-template-columns: repeat(2, 1fr); }
+  .rv-reputation-inner { grid-template-columns: 1fr; gap: 40px; }
+  .rv-reputation-copy { max-width: 100%; }
+  .rv-why-inner { grid-template-columns: 1fr; gap: 40px; }
+  
+  /* Stacking scroll entrance resets for mobile layout */
+  .rv-why:not(.visible) .rv-why-copy {
+    transform: translateY(40px) !important;
+  }
+  .rv-why:not(.visible) .rv-pillar {
+    transform: translateY(60px) !important;
+  }
+  .rv-why.visible .rv-why-copy,
+  .rv-why.visible .rv-pillar {
+    transform: translateY(0) !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .rv-stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .rv-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .rv-stat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.06); }
+  .rv-stat:nth-last-child(-n+2) { border-bottom: none; }
+  .rv-loc-grid { grid-template-columns: 1fr; }
+  .rv-featured { grid-template-columns: 1fr; }
+  .rv-featured-quote { display: none; }
+}
+
+@media (max-width: 640px) {
+  .rv-grid { grid-template-columns: 1fr; }
+  .rv-stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .rv-filter-tabs { flex-wrap: wrap; border-radius: var(--r-md); }
+  .rv-tab { flex: 1; text-align: center; border-radius: var(--r-sm); }
+  .rv-filter-wrap { flex-direction: column; align-items: flex-start; }
+  .rv-results-bar { flex-direction: column; align-items: flex-start; }
+  .rv-reputation-highlights { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .rv-stats-inner { grid-template-columns: 1fr 1fr; }
+  .rv-cta-buttons { flex-direction: column; align-items: center; }
+}
+
+/* ─── BRAND ICONS & ANIMATIONS ───────────────────────── */
+.rv-icon {
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: sub;
+  background-color: var(--orange);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  margin: 0 4px;
+}
+.rv-icon-star { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E"); }
+.rv-icon-fire { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.5 11.2c-.6-.7-1.3-1.4-1.3-2.5 0-1.3.8-2.3 2-2.9-.6-2.5-2.8-4.3-5.5-4.8-.4-.1-.8.2-.8.6v.2c0 .4-.2.8-.5 1.1-.3.3-.8.4-1.2.3-3-1-5.1 1.1-6.1 2.9-.7 1.4-1 3.1-.7 4.8.1.7.3 1.3.6 2 .3.6.8 1.1 1.4 1.4.6.3 1.2.4 1.9.4.2 0 .4 0 .6-.1.6-.2 1.3.1 1.6.6.3.5.3 1.2 0 1.7-.2.4-.6.6-1 .7-2.3.4-4.2 2-5 4.2h18c-.8-2.1-2.7-3.7-5-4.2-.4-.1-.8-.3-1-.7-.3-.5-.3-1.2 0-1.7.3-.5 1-.8 1.6-.6.2 0 .4.1.6.1.7 0 1.3-.1 1.9-.4.6-.3 1.1-.8 1.4-1.4.3-.7.5-1.3.6-2 .3-1.7 0-3.4-.7-4.8z'/%3E%3C/svg%3E"); }
+.rv-icon-steak { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L4 6v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V6l-8-4z'/%3E%3C/svg%3E"); } 
+.rv-icon-cheers { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 4h-2V3c0-.6-.4-1-1-1H6C5.4 2 5 2.4 5 3v1H3c-.6 0-1 .4-1 1v3c0 2.8 2.2 5 5 5h1.2c.4 1.6 1.6 2.8 3.2 3.2V20H9c-.6 0-1 .4-1 1v1h8v-1c0-.6-.4-1-1-1h-2.4v-3.8c1.6-.4 2.8-1.6 3.2-3.2H17c2.8 0 5-2.2 5-5V5c0-.6-.4-1-1-1z'/%3E%3C/svg%3E"); }
+.rv-icon-party { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z'/%3E%3C/svg%3E"); } 
+.rv-icon-pin { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'/%3E%3C/svg%3E"); }
+.rv-icon-handshake { -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v4h-2zm0 6h2v2h-2z'/%3E%3C/svg%3E"); }
+
+/* Scroll Animation Classes */
+.rv-card, .rv-featured, .rv-stat {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.rv-card.animate-in, .rv-featured.animate-in, .rv-stat.animate-in {
+  animation: scrollFadeIn 0.8s var(--ease-expo) forwards;
+}
+
+@keyframes scrollFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.rv-featured-badge {
+  animation: badgePulse 2s infinite;
+}
+@keyframes badgePulse {
+  0% { box-shadow: 0 0 0 0 rgba(246,134,37, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(246,134,37, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(246,134,37, 0); }
+}
+
+.rv-icon {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.rv-card:hover .rv-icon {
+  transform: scale(1.25) rotate(8deg);
+}
+
+.rv-visit-tag {
+  transition: all 0.3s ease;
+}
+.rv-card:hover .rv-visit-tag {
+  background: var(--orange);
+  color: var(--white);
+  box-shadow: 0 4px 10px rgba(246,134,37,0.3);
+}
+
+/* Enhancing top line on cards */
+.rv-card::before {
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+  height: 3px;
+}
+
+/* Shine Effect */
+.rv-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  transition: all 0.75s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+.rv-card:hover::after {
+  left: 200%;
+  transition: all 0.75s ease;
+}
+
+@media (max-width: 768px) {
+  .rv-hero {
+    min-height: auto !important;
+    padding-top: 80px !important; /* Elementor header spacing fallback */
+    padding-bottom: 20px !important;
+  }
+  .rv-hero-inner {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  .rv-hero h1 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+    margin-bottom: 16px !important;
+  }
+  .rv-hero-intro {
+    font-size: 15px !important;
+    margin-bottom: 24px !important;
+  }
+  .rv-hero-scroll {
+    display: none !important; /* Hide scroll indicator on mobile to save space */
+  }
+}
+
+/* Mobile Polish */
+@media (max-width: 992px) {
+  .rv-stats-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rv-stat {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .rv-stat:nth-child(even) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .rv-filter-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .rv-filter-tabs {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    border-radius: var(--r-md);
+  }
+  .rv-tab {
+    flex: 1 1 auto;
+    text-align: center;
+    border-radius: var(--r-md);
+  }
+  .rv-results-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .rv-featured {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px;
+  }
+  .rv-featured::before {
+    top: -20px; right: -20px;
+  }
+  .rv-featured-quote {
+    font-size: 40px;
+  }
+  .rv-reputation-inner {
+    grid-template-columns: 1fr;
+  }
+  .rv-hero h1 {
+    font-size: clamp(36px, 10vw, 50px);
+  }
+}
+
+/* Hero Animations */
+.rv-hero-tag, .rv-hero h1, .rv-hero-intro, .rv-hero-stars {
+  opacity: 0;
+  animation: heroSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.rv-hero-tag { animation-delay: 0.1s; }
+.rv-hero h1 { animation-delay: 0.3s; }
+.rv-hero-intro { animation-delay: 0.5s; }
+.rv-hero-stars { animation-delay: 0.7s; }
+
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating animation for stars */
+.rv-hero-stars-icons svg {
+  animation: floatStar 2.5s ease-in-out infinite alternate;
+}
+.rv-hero-stars-icons svg:nth-child(2) { animation-delay: 0.2s; }
+.rv-hero-stars-icons svg:nth-child(3) { animation-delay: 0.4s; }
+.rv-hero-stars-icons svg:nth-child(4) { animation-delay: 0.6s; }
+.rv-hero-stars-icons svg:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes floatStar {
+  0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 0px rgba(246,134,37,0)); }
+  100% { transform: translateY(-4px) scale(1.15); filter: drop-shadow(0 4px 8px rgba(246,134,37,0.5)); color: var(--orange-light); }
+}
+
+/* Card image placeholder shimmer if needed */
+.rv-avatar {
+  position: relative;
+  overflow: hidden;
+}
+.rv-avatar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: shimmer 4s infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+</style>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+<section class="rv-hero" id="rv-hero">
+  <div class="rv-hero-bg"></div>
+
+  <div class="container rv-hero-inner">
+    <div class="rv-hero-tag">
+      <span>Guest Stories &amp; Reviews</span>
+    </div>
+
+    <h1>What Our <em>Guests</em> Say</h1>
+
+    <p class="rv-hero-intro">
+      At Adega Gaucha, every meal is built around tradition, hospitality, and memorable service.
+      This page brings together real guest feedback from our Google Business Profile listings,
+      so visitors can see what diners are saying across all three Florida locations.
+    </p>
+
+    <div class="rv-hero-stars">
+      <div class="rv-hero-stars-icons" id="hero-stars">
+        <!-- rendered by JS -->
+      </div>
+      <span class="rv-hero-stars-text" id="hero-rating-text">Loading reviews&hellip;</span>
+    </div>
+  </div>
+
+  <div class="rv-hero-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="rv-hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═════════════════════════════════════════════════ -->
+<div class="rv-stats" id="rv-stats">
+  <div class="container">
+    <div class="rv-stats-inner">
+      <div class="rv-stat" data-stat="rating">
+        <div class="rv-stat-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="rgba(246,134,37,0.3)" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="rv-stat-value" id="stat-rating">—</div>
+        <div class="rv-stat-label">Avg Google Rating</div>
+      </div>
+
+      <div class="rv-stat" data-stat="reviews">
+        <div class="rv-stat-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="rgba(246,134,37,0.3)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="rv-stat-value" id="stat-reviews">—</div>
+        <div class="rv-stat-label">Total Reviews</div>
+      </div>
+
+      <div class="rv-stat" data-stat="locations">
+        <div class="rv-stat-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="rgba(246,134,37,0.3)" stroke-width="1.5"/>
+            <circle cx="12" cy="10" r="3" stroke="rgba(246,134,37,0.3)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="rv-stat-value" id="stat-locations">3</div>
+        <div class="rv-stat-label">Florida Locations</div>
+      </div>
+
+      <div class="rv-stat" data-stat="updated">
+        <div class="rv-stat-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="rgba(246,134,37,0.3)" stroke-width="1.5"/>
+            <path d="M12 6v6l4 2" stroke="rgba(246,134,37,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="rv-stat-value" id="stat-updated" style="font-size:clamp(18px,2.5vw,30px)">—</div>
+        <div class="rv-stat-label">Latest Review</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ REPUTATION SECTION ════════════════════════════════════════ -->
+<section class="rv-reputation">
+  <div class="container">
+    <div class="rv-reputation-inner">
+      <div class="rv-reputation-copy">
+        <div class="section-label">A Dining Experience</div>
+        <h2>Guests <em>Remember</em></h2>
+        <p>
+          From signature churrasco and private celebrations to warm service and elegant atmosphere,
+          guests consistently highlight the details that make Adega Gaucha feel special.
+          Explore real-time ratings and guest comments from Orlando, Kissimmee, and Deerfield Beach below.
+        </p>
+      </div>
+
+      <div class="rv-reputation-highlights">
+        <div class="rv-highlight">
+          <div class="rv-highlight-icon"><i class="rv-icon rv-icon-steak"></i></div>
+          <div class="rv-highlight-title">Signature Churrasco</div>
+          <div class="rv-highlight-text">Premium cuts served tableside by our passadores, just as tradition dictates.</div>
+        </div>
+        <div class="rv-highlight">
+          <div class="rv-highlight-icon"><i class="rv-icon rv-icon-party"></i></div>
+          <div class="rv-highlight-title">Private Celebrations</div>
+          <div class="rv-highlight-text">Birthdays, anniversaries, and milestones made unforgettable.</div>
+        </div>
+        <div class="rv-highlight">
+          <div class="rv-highlight-icon"><i class="rv-icon rv-icon-handshake"></i></div>
+          <div class="rv-highlight-title">Warm Hospitality</div>
+          <div class="rv-highlight-text">Attentive service that feels genuinely personal from first greeting to final course.</div>
+        </div>
+        <div class="rv-highlight">
+          <div class="rv-highlight-icon"><i class="rv-icon rv-icon-star"></i></div>
+          <div class="rv-highlight-title">Elegant Atmosphere</div>
+          <div class="rv-highlight-text">A setting that elevates every visit, whether casual or celebratory.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS SECTION ═══════════════════════════════════════════ -->
+<section class="rv-reviews-section">
+  <div class="container">
+
+    <!-- Filter + heading -->
+    <div class="rv-filter-wrap">
+      <div class="rv-filter-left">
+        <div class="section-label">Live from Google Business Profile</div>
+        <h2>Guest Reviews</h2>
+      </div>
+
+      <div class="rv-filter-tabs" role="tablist" aria-label="Filter reviews by location">
+        <button class="rv-tab active" data-location="all" role="tab" aria-selected="true">All Locations</button>
+        <button class="rv-tab" data-location="orlando" role="tab" aria-selected="false">Orlando</button>
+        <button class="rv-tab" data-location="kissimmee" role="tab" aria-selected="false">Kissimmee</button>
+        <button class="rv-tab" data-location="deerfield" role="tab" aria-selected="false">Deerfield Beach</button>
+      </div>
+    </div>
+
+    <!-- Featured / spotlight review -->
+    <div class="rv-featured" id="rv-featured" style="display:none;">
+      <div class="rv-featured-badge">Most Helpful</div>
+      <div class="rv-featured-quote" aria-hidden="true">&ldquo;</div>
+      <div class="rv-featured-content">
+        <div class="rv-featured-stars" id="featured-stars"></div>
+        <p class="rv-featured-text" id="featured-text"></p>
+        <div class="rv-featured-author">
+          <span class="rv-featured-name" id="featured-name"></span>
+          <span class="rv-sep">·</span>
+          <span class="rv-featured-meta" id="featured-meta"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results bar -->
+    <div class="rv-results-bar">
+      <div class="rv-results-count">
+        Showing <strong id="rv-count">—</strong> reviews
+      </div>
+
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div class="rv-source-badge">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Live from Google
+        </div>
+
+        <div class="rv-sort-wrap">
+          <span class="rv-sort-label">Sort by</span>
+          <select class="rv-sort-select" id="rv-sort" aria-label="Sort reviews">
+            <option value="newest">Newest First</option>
+            <option value="highest">Highest Rated</option>
+            <option value="lowest">Lowest Rated</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="rv-grid" id="rv-grid" role="list">
+      <!-- skeleton -->
+      <div class="rv-skeleton" aria-hidden="true">
+        <div style="display:flex;gap:12px;align-items:center;"><div class="rv-skel-avatar"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px;"><div class="rv-skel-line" style="width:60%"></div><div class="rv-skel-line" style="width:40%"></div></div></div>
+        <div class="rv-skel-line"></div><div class="rv-skel-line" style="width:90%"></div><div class="rv-skel-line" style="width:75%"></div><div class="rv-skel-line" style="width:50%"></div>
+      </div>
+      <div class="rv-skeleton" aria-hidden="true">
+        <div style="display:flex;gap:12px;align-items:center;"><div class="rv-skel-avatar"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px;"><div class="rv-skel-line" style="width:55%"></div><div class="rv-skel-line" style="width:35%"></div></div></div>
+        <div class="rv-skel-line"></div><div class="rv-skel-line" style="width:85%"></div><div class="rv-skel-line" style="width:70%"></div><div class="rv-skel-line" style="width:40%"></div>
+      </div>
+      <div class="rv-skeleton" aria-hidden="true">
+        <div style="display:flex;gap:12px;align-items:center;"><div class="rv-skel-avatar"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px;"><div class="rv-skel-line" style="width:65%"></div><div class="rv-skel-line" style="width:45%"></div></div></div>
+        <div class="rv-skel-line"></div><div class="rv-skel-line" style="width:80%"></div><div class="rv-skel-line" style="width:95%"></div><div class="rv-skel-line" style="width:60%"></div>
+      </div>
+    </div>
+
+    <!-- Load more -->
+    <div class="rv-load-more-wrap" id="rv-load-more" style="display:none;">
+      <button class="rv-btn-load" id="rv-load-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+        Load More Reviews
+      </button>
+    </div>
+
+  </div><!-- /container -->
+</section>
+
+<!-- ═══ LAST UPDATED STRIP ════════════════════════════════════════ -->
+<div class="rv-updated">
+  <div class="container rv-updated-inner">
+    <div class="rv-updated-dot"></div>
+    <span class="rv-updated-text">Reviews last synced: <strong id="last-updated">—</strong> · Source: Google Business Profile</span>
+  </div>
+</div>
+
+<!-- ═══ WHY GUESTS RETURN (UPGRADED NEW AND UNIQUE CLASSICAL DESIGN) ════════════════════════════════ -->
+<section class="rv-why">
+  <div class="container">
+    <div class="rv-why-inner">
+      <div class="rv-why-copy">
+        <div class="section-label">More Than a Meal</div>
+        <h2>Why Guests <em>Return</em></h2>
+        <p>
+          Adega Gaucha is where guests come for the food and return for the experience.
+          From the first greeting to the final course, our team focuses on hospitality that
+          feels polished, warm, and genuinely personal.
+        </p>
+        <p>
+          Whether it is a birthday dinner, private event, romantic evening, or a casual night out,
+          our goal is to create a dining experience worth sharing.
+        </p>
+      </div>
+
+      <div class="rv-why-pillars">
+        <!-- Pillar 1 -->
+        <div class="rv-pillar">
+          <div class="rv-pillar-icon"><i class="rv-icon rv-icon-fire"></i></div>
+          <div>
+            <div class="rv-pillar-title">Authentic Churrasco Tradition</div>
+            <div class="rv-pillar-text">Every cut prepared over open flame by our gaucho passadores, exactly as it has been done for generations in Rio Grande do Sul.</div>
+          </div>
+        </div>
+        <!-- Pillar 2 -->
+        <div class="rv-pillar">
+          <div class="rv-pillar-icon"><i class="rv-icon rv-icon-cheers"></i></div>
+          <div>
+            <div class="rv-pillar-title">Celebrations Done Right</div>
+            <div class="rv-pillar-text">Private dining, personalized service, and an elegant atmosphere that makes every milestone feel extraordinary.</div>
+          </div>
+        </div>
+        <!-- Pillar 3 -->
+        <div class="rv-pillar">
+          <div class="rv-pillar-icon"><i class="rv-icon rv-icon-pin"></i></div>
+          <div>
+            <div class="rv-pillar-title">Three Florida Locations</div>
+            <div class="rv-pillar-text">Orlando, Kissimmee, and Deerfield Beach — each location delivering the same standard of excellence.</div>
+          </div>
+        </div>
+        <!-- Pillar 4 -->
+        <div class="rv-pillar">
+          <div class="rv-pillar-icon"><i class="rv-icon rv-icon-star"></i></div>
+          <div>
+            <div class="rv-pillar-title">Consistently Top-Rated</div>
+            <div class="rv-pillar-text">Thousands of five-star reviews across Google reflect a commitment that never wavers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOCATION TRUST BLOCK ══════════════════════════════════════ -->
+<section class="rv-locations">
+  <div class="container">
+    <div class="rv-locations-header">
+      <div class="section-label">Reviews by Location</div>
+      <h2>Three Locations, One Standard</h2>
+    </div>
+
+    <div class="rv-loc-grid">
+      <!-- Orlando -->
+      <div class="rv-loc-card" data-loc="orlando">
+        <div class="rv-loc-header">
+          <div class="rv-loc-state">Orlando · FL</div>
+          <div class="rv-loc-name">Orlando</div>
+        </div>
+        <div class="rv-loc-body">
+          <div class="rv-loc-rating-row">
+            <div class="rv-loc-rating-val" id="loc-rating-orlando">4.8</div>
+            <div class="rv-loc-rating-right">
+              <div class="rv-stars" id="loc-stars-orlando"></div>
+              <div class="rv-loc-count" id="loc-count-orlando">Loading&hellip;</div>
+            </div>
+          </div>
+          <p class="rv-loc-desc">A favorite for premium dining, private gatherings, and celebratory dinners in the heart of Central Florida.</p>
+          <div class="rv-loc-tags">
+            <span class="rv-loc-tag">Private Events</span>
+            <span class="rv-loc-tag">Business Dinners</span>
+            <span class="rv-loc-tag">Anniversary</span>
+          </div>
+          <a href="https://adegagaucha.com/locations/orlando" class="rv-loc-link">
+            View Location
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Kissimmee -->
+      <div class="rv-loc-card" data-loc="kissimmee">
+        <div class="rv-loc-header">
+          <div class="rv-loc-state">Kissimmee · FL</div>
+          <div class="rv-loc-name">Kissimmee</div>
+        </div>
+        <div class="rv-loc-body">
+          <div class="rv-loc-rating-row">
+            <div class="rv-loc-rating-val" id="loc-rating-kissimmee">4.7</div>
+            <div class="rv-loc-rating-right">
+              <div class="rv-stars" id="loc-stars-kissimmee"></div>
+              <div class="rv-loc-count" id="loc-count-kissimmee">Loading&hellip;</div>
+            </div>
+          </div>
+          <p class="rv-loc-desc">Popular with families, travelers, and guests visiting the Walt Disney World area — a warm welcome every time.</p>
+          <div class="rv-loc-tags">
+            <span class="rv-loc-tag">Family Dining</span>
+            <span class="rv-loc-tag">Tourist Friendly</span>
+            <span class="rv-loc-tag">Group Bookings</span>
+          </div>
+          <a href="https://adegagaucha.com/locations/kissimmee" class="rv-loc-link">
+            View Location
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Deerfield Beach -->
+      <div class="rv-loc-card" data-loc="deerfield">
+        <div class="rv-loc-header">
+          <div class="rv-loc-state">Deerfield Beach · FL</div>
+          <div class="rv-loc-name">Deerfield Beach</div>
+        </div>
+        <div class="rv-loc-body">
+          <div class="rv-loc-rating-row">
+            <div class="rv-loc-rating-val" id="loc-rating-deerfield">4.8</div>
+            <div class="rv-loc-rating-right">
+              <div class="rv-stars" id="loc-stars-deerfield"></div>
+              <div class="rv-loc-count" id="loc-count-deerfield">Loading&hellip;</div>
+            </div>
+          </div>
+          <p class="rv-loc-desc">Known for upscale service, happy hour favorites, and private dining experiences in South Florida.</p>
+          <div class="rv-loc-tags">
+            <span class="rv-loc-tag">Happy Hour</span>
+            <span class="rv-loc-tag">Private Dining</span>
+            <span class="rv-loc-tag">Date Night</span>
+          </div>
+          <a href="https://adegagaucha.com/locations/deerfieldbeach" class="rv-loc-link">
+            View Location
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND ══════════════════════════════════════════════════ -->
+<section class="rv-cta">
+  <div class="container">
+    <div class="rv-cta-inner">
+      <div class="section-label">Ready to Visit?</div>
+      <h2>Experience Adega Gaucha <em>for Yourself</em></h2>
+      <div class="rv-divider"></div>
+      <p>
+        Reserve your table today and discover why guests across Florida continue to choose
+        Adega Gaucha for authentic Brazilian steakhouse dining.
+      </p>
+      <div class="rv-cta-buttons">
+        <a href="https://adegagaucha.com/reservations/" class="rv-btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Reserve a Table
+        </a>
+        <a href="https://adegagaucha.com/menu/" class="rv-btn-secondary">
+          View Menus
+        </a>
+        <a href="https://adegagaucha.com/locations/" class="rv-btn-secondary">
+          Explore Locations
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!--  JAVASCRIPT                                                     -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── CONFIG ──────────────────────────────────────────────────── */
+  const CONFIG = {
+    /* Replace with your n8n webhook or WP REST endpoint that
+       returns review data from Google Business Profile API.
+       Expected shape: { stats: {...}, reviews: [...] }          */
+    apiEndpoint: 'https://adegagaucha.com/wp-json/adega/v1/reviews',
+
+    /* Cards per page before "Load More" appears */
+    pageSize: 9,
+
+    /* Minimum words in a review to be shown as Featured */
+    featuredMinWords: 20,
+
+    /* Animation stagger delay between cards (ms) */
+    staggerDelay: 60,
+  };
+
+  /* ── SAMPLE / FALLBACK DATA ──────────────────────────────────── */
+  /* Used when the API endpoint is unavailable or returns an error.
+     Replace with live API data once backend is connected.        */
+  const FALLBACK = {
+    stats: {
+      averageRating: 4.8,
+      totalReviews: 2890,
+      lastUpdated: '2026-05-23T18:00:00Z',
+    },
+    locationStats: {
+      orlando:   { rating: 4.8, count: 1104 },
+      kissimmee: { rating: 4.7, count: 876  },
+      deerfield: { rating: 4.8, count: 910  },
+    },
+    reviews: [
+      {
+        id: '1', reviewer: 'Maria S.', avatar: null,
+        rating: 5, location: 'orlando',
+        date: '2026-05-20T12:00:00Z',
+        visitType: 'Birthday Dinner',
+        text: 'An absolutely stunning evening. The churrasco was perfectly prepared, the service was attentive without being intrusive, and the atmosphere made our anniversary feel truly special. We will be back for every celebration from now on.'
+      },
+      {
+        id: '2', reviewer: 'James P.', avatar: null,
+        rating: 5, location: 'kissimmee',
+        date: '2026-05-18T14:00:00Z',
+        visitType: 'Family Gathering',
+        text: 'Perfect for our family celebration. The staff was incredibly attentive and the food exceeded every expectation. Our kids loved the variety and the passadores were so friendly and patient explaining each cut.'
+      },
+      {
+        id: '3', reviewer: 'Robert M.', avatar: null,
+        rating: 5, location: 'deerfield',
+        date: '2026-05-17T19:00:00Z',
+        visitType: 'Business Dinner',
+        text: 'Great place for a business dinner. Premium atmosphere, smooth impeccable service, and food that made a lasting impression on our clients. Will be using this for all future client entertainment.'
+      },
+      {
+        id: '4', reviewer: 'Carla T.', avatar: null,
+        rating: 5, location: 'orlando',
+        date: '2026-05-15T18:30:00Z',
+        visitType: 'Date Night',
+        text: 'An elegant steakhouse experience with excellent service and beautifully prepared churrasco. The wine selection is impressive and the sommelier was very helpful. Exactly what a date night should be.'
+      },
+      {
+        id: '5', reviewer: 'David L.', avatar: null,
+        rating: 5, location: 'deerfield',
+        date: '2026-05-14T20:00:00Z',
+        visitType: 'Celebration',
+        text: 'We celebrated our 25th wedding anniversary here and everything was beyond perfect. From the moment we walked in, the team made us feel like VIPs. The picanha and the lamb chops were outstanding.'
+      },
+      {
+        id: '6', reviewer: 'Sofia R.', avatar: null,
+        rating: 5, location: 'kissimmee',
+        date: '2026-05-12T13:00:00Z',
+        visitType: 'Dinner',
+        text: 'Came in after a day at the theme parks and this was the perfect end to the day. The salad bar alone is worth the visit — so many fresh options. The churrasco was excellent and the service was fantastic.'
+      },
+      {
+        id: '7', reviewer: 'Michael B.', avatar: null,
+        rating: 5, location: 'orlando',
+        date: '2026-05-10T19:00:00Z',
+        visitType: 'Birthday Dinner',
+        text: 'Celebrated my father\'s 70th birthday here and the restaurant went above and beyond. They brought out a dessert with a candle and sang to him. The entire family was moved by the gesture. Food was phenomenal as always.'
+      },
+      {
+        id: '8', reviewer: 'Ana F.', avatar: null,
+        rating: 4, location: 'deerfield',
+        date: '2026-05-08T18:00:00Z',
+        visitType: 'Dinner',
+        text: 'Very good experience overall. The meat quality is top notch and the service was professional. The wait for a table was a bit long but well worth it. The happy hour cocktails are fantastic.'
+      },
+      {
+        id: '9', reviewer: 'Thomas W.', avatar: null,
+        rating: 5, location: 'kissimmee',
+        date: '2026-05-06T20:30:00Z',
+        visitType: 'Group Dinner',
+        text: 'Brought a group of 12 colleagues here and the staff handled everything seamlessly. They accommodated our group without missing a beat. The beef tenderloin was the highlight of the evening. Highly recommend for large groups.'
+      },
+      {
+        id: '10', reviewer: 'Jessica C.', avatar: null,
+        rating: 5, location: 'orlando',
+        date: '2026-05-04T19:00:00Z',
+        visitType: 'Date Night',
+        text: 'My boyfriend surprised me with dinner here for Valentine\'s Day. The ambiance was romantic, the service impeccable. The lamb and the chicken hearts (surprisingly amazing!) were our favorites. We left completely satisfied.'
+      },
+      {
+        id: '11', reviewer: 'Carlos M.', avatar: null,
+        rating: 5, location: 'deerfield',
+        date: '2026-05-02T18:00:00Z',
+        visitType: 'Birthday Dinner',
+        text: 'As a Brazilian living in the US, finding authentic churrasco that reminds me of home is rare. Adega Gaucha nails it every time. The flavors, the cuts, the tradition — all perfectly preserved. Obrigado!'
+      },
+      {
+        id: '12', reviewer: 'Linda H.', avatar: null,
+        rating: 5, location: 'kissimmee',
+        date: '2026-04-30T17:00:00Z',
+        visitType: 'Family Gathering',
+        text: 'Visited with my extended family of 8 ranging from ages 5 to 75. Everyone found something they loved. The staff were patient with the little ones and attentive to my mother who has dietary restrictions. A truly inclusive dining experience.'
+      },
+    ]
+  };
+
+  /* ── STATE ───────────────────────────────────────────────────── */
+  let allReviews  = [];
+  let stats       = {};
+  let locationStats = {};
+  let activeFilter = 'all';
+  let activeSort   = 'newest';
+  let currentPage  = 1;
+  let isLoading    = false;
+
+  /* ── UTILITIES ───────────────────────────────────────────────── */
+  function starsHtml(rating, size = 15) {
+    const full    = '#F5B400';
+    const partial = '#9a7d3f';
+    let html = '';
+    for (let i = 1; i <= 5; i++) {
+      const col = i <= rating ? full : partial;
+      html += `<svg width="${size}" height="${size}" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              fill="${col}" stroke="${col}" stroke-width="0.5"/>
+      </svg>`;
+    }
+    return html;
+  }
+
+  function initials(name) {
+    return (name || '?')
+      .split(' ')
+      .slice(0, 2)
+      .map(w => w[0])
+      .join('')
+      .toUpperCase();
+  }
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function relativeDate(iso) {
+    if (!iso) return '';
+    const now    = new Date();
+    const d      = new Date(iso);
+    const diffMs = now - d;
+    const days   = Math.floor(diffMs / 86400000);
+    if (days === 0) return 'Today';
+    if (days === 1) return 'Yesterday';
+    if (days < 7)  return `${days} days ago`;
+    if (days < 30) return `${Math.floor(days / 7)} weeks ago`;
+    if (days < 365) return `${Math.floor(days / 30)} months ago`;
+    return `${Math.floor(days / 365)} years ago`;
+  }
+
+  function wordCount(text) {
+    return (text || '').trim().split(/\s+/).length;
+  }
+
+  function locationLabel(loc) {
+    const map = { orlando: 'Orlando', kissimmee: 'Kissimmee', deerfield: 'Deerfield Beach' };
+    return map[loc] || loc;
+  }
+
+  function animateCount(el, target, isFloat, suffix) {
+    const duration = 1200;
+    const start    = performance.now();
+    const from     = 0;
+
+    function tick(now) {
+      const pct = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - pct, 3);
+      const val  = from + (target - from) * ease;
+      el.textContent = isFloat
+        ? val.toFixed(1) + (suffix || '')
+        : Math.round(val).toLocaleString() + (suffix || '');
+      if (pct < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  /* ── FETCH REVIEWS ───────────────────────────────────────────── */
+  async function fetchReviews() {
+    try {
+      const res = await fetch(CONFIG.apiEndpoint, {
+        headers: { 'Accept': 'application/json' },
+        signal: AbortSignal.timeout(8000)
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      return data;
+    } catch (err) {
+      console.warn('[Adega Reviews] API unavailable, using fallback data.', err.message);
+      return null;
+    }
+  }
+
+  /* ── RENDER STATS ────────────────────────────────────────────── */
+  function renderStats(s, lStats) {
+    /* Hero */
+    document.getElementById('hero-stars').innerHTML = starsHtml(Math.round(s.averageRating || 4.8), 20);
+    document.getElementById('hero-rating-text').textContent =
+      `${(s.averageRating || 4.8).toFixed(1)} stars · ${(s.totalReviews || 0).toLocaleString()} verified guest reviews`;
+
+    /* Stat bar - animate on intersection */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        animateCount(document.getElementById('stat-rating'),  s.averageRating || 4.8, true);
+        animateCount(document.getElementById('stat-reviews'), s.totalReviews || 0,    false);
+        const updated = s.lastUpdated ? formatDate(s.lastUpdated) : 'Recently';
+        document.getElementById('stat-updated').textContent  = updated;
+        document.getElementById('last-updated').textContent  = updated;
+        observer.disconnect();
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(document.getElementById('rv-stats'));
+
+    /* Location stats */
+    ['orlando', 'kissimmee', 'deerfield'].forEach(loc => {
+      const ls  = (lStats || {})[loc] || {};
+      const rat = ls.rating || (loc === 'kissimmee' ? 4.7 : 4.8);
+      const cnt = ls.count  || '—';
+
+      document.getElementById(`loc-rating-${loc}`).textContent = rat.toFixed(1);
+      document.getElementById(`loc-stars-${loc}`).innerHTML    = starsHtml(Math.round(rat), 14);
+      document.getElementById(`loc-count-${loc}`).textContent  = cnt ? `${Number(cnt).toLocaleString()} reviews` : '—';
+    });
+  }
+
+  /* ── FEATURED CARD ───────────────────────────────────────────── */
+  function renderFeatured(reviews) {
+    const candidate = reviews.find(r => r.rating >= 5 && wordCount(r.text) >= CONFIG.featuredMinWords);
+    if (!candidate) return;
+
+    const el = document.getElementById('rv-featured');
+    el.style.display = 'grid';
+    document.getElementById('featured-stars').innerHTML = starsHtml(candidate.rating, 18);
+    document.getElementById('featured-text').textContent = candidate.text;
+    document.getElementById('featured-name').textContent = candidate.reviewer;
+    document.getElementById('featured-meta').textContent =
+      `${locationLabel(candidate.location)} · ${relativeDate(candidate.date)}`;
+  }
+
+  /* ── FILTER + SORT ───────────────────────────────────────────── */
+  function filteredReviews() {
+    let reviews = [...allReviews];
+    if (activeFilter !== 'all') {
+      reviews = reviews.filter(r => r.location === activeFilter);
+    }
+    reviews.sort((a, b) => {
+      if (activeSort === 'newest')  return new Date(b.date) - new Date(a.date);
+      if (activeSort === 'highest') return b.rating - a.rating;
+      if (activeSort === 'lowest')  return a.rating - b.rating;
+      return 0;
+    });
+    return reviews;
+  }
+
+  /* ── CARD HTML ───────────────────────────────────────────────── */
+  function cardHtml(review, idx) {
+    const long = wordCount(review.text) > 55;
+    const animDelay = (idx % CONFIG.pageSize) * CONFIG.staggerDelay;
+
+    return `
+      <article class="rv-card" role="listitem" style="animation-delay:${animDelay}ms">
+        <div class="rv-card-header">
+          <div class="rv-card-reviewer">
+            <div class="rv-avatar">${initials(review.reviewer)}</div>
+            <div class="rv-reviewer-info">
+              <div class="rv-reviewer-name">${escHtml(review.reviewer)}</div>
+              <div class="rv-reviewer-meta">${locationLabel(review.location)} · ${relativeDate(review.date)}</div>
+            </div>
+          </div>
+          <div class="rv-google-icon" title="Google Review">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="rv-stars" aria-label="${review.rating} out of 5 stars">${starsHtml(review.rating)}</div>
+
+        <div class="rv-card-body">
+          <p class="rv-card-text${long ? ' clamped' : ''}" id="card-text-${review.id}">${escHtml(review.text)}</p>
+          ${long ? `<button class="rv-read-more" aria-expanded="false" data-id="${review.id}">Read more</button>` : ''}
+        </div>
+
+        <div class="rv-card-footer">
+          ${review.visitType ? `<span class="rv-visit-tag">✦ ${escHtml(review.visitType)}</span>` : '<span></span>'}
+          <span class="rv-location-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${locationLabel(review.location)}
+          </span>
+        </div>
+      </article>`;
+  }
+
+  function escHtml(str) {
+    return String(str || '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+
+  /* ── RENDER GRID ─────────────────────────────────────────────── */
+  function renderGrid(page) {
+    const grid = document.getElementById('rv-grid');
+    const reviews  = filteredReviews();
+    const start    = (page - 1) * CONFIG.pageSize;
+    const slice    = reviews.slice(start, start + CONFIG.pageSize);
+    const countEl  = document.getElementById('rv-count');
+
+    countEl.textContent = reviews.length.toLocaleString();
+
+    if (page === 1) {
+      if (reviews.length === 0) {
+        grid.innerHTML = '<div class="rv-empty">No reviews found for this location yet.</div>';
+        document.getElementById('rv-load-more').style.display = 'none';
+        return;
+      }
+      grid.innerHTML = '';
+    }
+
+    slice.forEach((r, i) => {
+      const div = document.createElement('div');
+      div.innerHTML = cardHtml(r, start + i);
+      grid.appendChild(div.firstElementChild);
+    });
+
+    const hasMore = start + CONFIG.pageSize < reviews.length;
+    document.getElementById('rv-load-more').style.display = hasMore ? 'block' : 'none';
+
+    /* Read-more toggles */
+    grid.querySelectorAll('.rv-read-more').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id      = btn.dataset.id;
+        const textEl  = document.getElementById(`card-text-${id}`);
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        textEl.classList.toggle('clamped', expanded);
+        btn.setAttribute('aria-expanded', String(!expanded));
+        btn.textContent = expanded ? 'Read more' : 'Show less';
+      });
+    });
+  }
+
+  /* ── INIT ────────────────────────────────────────────────────── */
+  async function init() {
+
+  // Check if Elementor is in edit mode to prevent hanging
+  const isEditMode = document.body.classList.contains('elementor-editor-active') || 
+                     (typeof elementorFrontend !== 'undefined' && elementorFrontend.isEditMode());
+  if (isEditMode) {
+      console.log("Adega Reviews: Edit mode detected, animations disabled to prevent editor hang.");
+      return;
+  }
+
+    /* Hero Ken-Burns */
+    requestAnimationFrame(() =>
+      document.getElementById('rv-hero').classList.add('loaded')
+    );
+
+    /* Fetch data */
+    const data = null; /* FORCE DUMMY REVIEWS for preview */
+
+    if (data && data.reviews && data.reviews.length > 0) {
+      allReviews    = data.reviews;
+      stats         = data.stats         || FALLBACK.stats;
+      locationStats = data.locationStats || FALLBACK.locationStats;
+    } else {
+      allReviews    = FALLBACK.reviews;
+      stats         = FALLBACK.stats;
+      locationStats = FALLBACK.locationStats;
+    }
+
+    renderStats(stats, locationStats);
+    renderFeatured(allReviews);
+    renderGrid(1);
+
+    /* Filter tabs */
+    document.querySelectorAll('.rv-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.rv-tab').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        activeFilter = tab.dataset.location;
+        currentPage  = 1;
+        document.getElementById('rv-grid').innerHTML = '';
+        renderGrid(1);
+      });
+    });
+
+    /* Sort */
+    document.getElementById('rv-sort').addEventListener('change', (e) => {
+      activeSort  = e.target.value;
+      currentPage = 1;
+      document.getElementById('rv-grid').innerHTML = '';
+      renderGrid(1);
+    });
+
+    /* Load more */
+    document.getElementById('rv-load-btn').addEventListener('click', () => {
+      currentPage++;
+      renderGrid(currentPage);
+    });
+
+    // Scroll entrance animations for the "Why Guests Return" block
+    const whySection = document.querySelector('.rv-why');
+    if (whySection) {
+      const whyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            whySection.classList.add('visible');
+            whyObserver.unobserve(whySection);
+          }
+        });
+      }, { threshold: 0.15 });
+      whyObserver.observe(whySection);
+    }
+  }
+
+  /* ── Kick off ────────────────────────────────────────────────── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  
+  // Check if Elementor is in edit mode to prevent hanging
+  const isEditMode = document.body.classList.contains('elementor-editor-active') || 
+                     (typeof elementorFrontend !== 'undefined' && elementorFrontend.isEditMode());
+  if (isEditMode) {
+      console.log("Adega Reviews: Edit mode detected, animations disabled to prevent editor hang.");
+      return;
+  }
+
+  const elementsToAnimate = document.querySelectorAll('.rv-card, .rv-featured, .rv-stat');
+  
+  const observer = new IntersectionObserver((entries) => {
+    let delay = 0;
+    entries.forEach((entry) => {
+      if(entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('animate-in');
+        }, delay);
+        delay += 100; // Staggered delay for grid elements
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
+
+  elementsToAnimate.forEach(el => observer.observe(el));
+});
+</script>
