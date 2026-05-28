@@ -542,24 +542,30 @@ html, body {
   gap: 0;
   background: var(--charcoal-lt);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: var(--r-full);
-  padding: 4px;
+  border-radius: 30px; /* Highly rounded capsule container matching your image */
+  padding: 0;
+  overflow: hidden; /* Automatically rounds the first and last tabs' corners exactly as highlighted! */
 }
 
 .rv-tab {
-  font-family: var(--font-label);
+  font-family: var(--font-sans);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: var(--r-full);
+  padding: 12px 24px;
   border: none;
   background: transparent;
   color: var(--text-muted);
   cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background 0.3s var(--ease-expo), color 0.3s ease;
   white-space: nowrap;
+  border-right: 1px solid rgba(255,255,255,0.08); /* Divider line between locations */
+  border-radius: 0 !important; /* Force overflow container rounding */
+}
+
+.rv-tab:last-child {
+  border-right: none;
 }
 
 .rv-tab:hover { color: var(--cream); }
@@ -567,6 +573,21 @@ html, body {
 .rv-tab.active {
   background: var(--orange);
   color: var(--black);
+}
+
+/* Mobile responsive swipe styles for capsule navigation */
+@media (max-width: 768px) {
+  .rv-filter-tabs {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .rv-tab {
+    padding: 12px 18px;
+    flex: 1 0 auto;
+    text-align: center;
+  }
 }
 
 /* Sort + Count bar */
@@ -2155,11 +2176,19 @@ html, body {
 (function () {
   'use strict';
 
-  /* ── CONFIG ──────────────────────────────────────────────────── */
+  /* ── CONFIG & GOOGLE MY BUSINESS API CONNECTION ──────────────── */
   const CONFIG = {
-    /* Replace with your n8n webhook or WP REST endpoint that
-       returns review data from Google Business Profile API.
-       Expected shape: { stats: {...}, reviews: [...] }          */
+    // -----------------------------------------------------------------
+    // GOOGLE MY BUSINESS API CONNECTION SETTINGS
+    // 1. Paste your Google Business Profile API Key or Maps Key below:
+    apiKey: '', 
+    // 2. Paste your Google Place ID (e.g. ChIJy7u7y...):
+    placeId: '', 
+    // 3. Set to true once you have pasted your API Key and Place ID above:
+    useLiveApi: false, 
+    // -----------------------------------------------------------------
+
+    /* Default API Endpoint fallback wrapper */
     apiEndpoint: 'https://adegagaucha.com/wp-json/adega/v1/reviews',
 
     /* Cards per page before "Load More" appears */
@@ -2355,8 +2384,39 @@ html, body {
     requestAnimationFrame(tick);
   }
 
-  /* ── FETCH REVIEWS ───────────────────────────────────────────── */
+  /* ── FETCH REVIEWS & GOOGLE BUSINESS PROFILE INTEGRATION ─────── */
   async function fetchReviews() {
+    // If the GMB API toggle is activated, pull live from Google Places
+    if (CONFIG.useLiveApi && CONFIG.apiKey && CONFIG.placeId) {
+      try {
+        const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${CONFIG.placeId}&fields=reviews,rating,user_ratings_total&key=${CONFIG.apiKey}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        
+        if (data && data.result) {
+          const gStats = {
+            averageRating: data.result.rating || 4.8,
+            totalReviews: data.result.user_ratings_total || 2890,
+            lastUpdated: new Date().toISOString()
+          };
+          const gReviews = (data.result.reviews || []).map((r, index) => ({
+            id: `g-${index}`,
+            reviewer: r.author_name,
+            rating: r.rating,
+            location: 'orlando', // default
+            date: new Date(r.time * 1000).toISOString(),
+            visitType: 'Google Review',
+            text: r.text
+          }));
+          return { stats: gStats, reviews: gReviews, locationStats: FALLBACK.locationStats };
+        }
+      } catch (err) {
+        console.warn('[Adega Reviews] GMB live connection failed, using premium local data.', err.message);
+      }
+    }
+
+    // Default connection wrapper fallback
     try {
       const res = await fetch(CONFIG.apiEndpoint, {
         headers: { 'Accept': 'application/json' },
@@ -2366,7 +2426,7 @@ html, body {
       const data = await res.json();
       return data;
     } catch (err) {
-      console.warn('[Adega Reviews] API unavailable, using fallback data.', err.message);
+      console.warn('[Adega Reviews] Standard REST API unavailable, using fallback data.', err.message);
       return null;
     }
   }
@@ -2563,7 +2623,7 @@ html, body {
     );
 
     /* Fetch data */
-    const data = null; /* FORCE DUMMY REVIEWS for preview */
+    const data = await fetchReviews();
 
     if (data && data.reviews && data.reviews.length > 0) {
       allReviews    = data.reviews;
