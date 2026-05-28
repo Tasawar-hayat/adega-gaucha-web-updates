@@ -407,6 +407,7 @@ html, body {
 .rv-reputation {
   padding-block: clamp(60px, 8vw, 100px);
   background: var(--charcoal);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
 .rv-reputation-inner {
@@ -427,7 +428,10 @@ html, body {
   margin-block: 14px 20px;
 }
 
-.rv-reputation-copy h2 em { font-style: italic; color: var(--orange-light); }
+.rv-reputation-copy h2 em { 
+  font-style: italic; 
+  color: var(--orange); /* Default Brand Orange */
+}
 
 .rv-reputation-copy p {
   font-size: 16px;
@@ -439,36 +443,71 @@ html, body {
 .rv-reputation-highlights {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 
 .rv-highlight {
-  background: var(--charcoal-lt);
-  border: 1px solid var(--orange-border);
+  background: var(--charcoal-mid);
+  border: 1px solid rgba(255,255,255,0.05);
   border-radius: var(--r-md);
-  padding: 24px 20px;
+  padding: 30px 24px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  transition: border-color 0.3s ease, transform 0.3s var(--ease-expo);
+  gap: 12px;
+  position: relative;
+  transition: border-color 0.4s var(--ease-expo), transform 0.4s var(--ease-expo), background-color 0.4s var(--ease-expo);
+  cursor: default;
+  overflow: hidden;
+}
+
+.rv-highlight::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--orange);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease-expo);
+  border-radius: var(--r-md) 0 0 var(--r-md);
 }
 
 .rv-highlight:hover {
-  border-color: var(--orange);
-  transform: translateY(-3px);
+  border-color: var(--orange-border);
+  background-color: var(--orange-bg);
+  transform: translateY(-5px);
 }
 
-.rv-highlight-icon { font-size: 22px; line-height: 1; }
+.rv-highlight:hover::after {
+  transform: scaleY(1);
+}
+
+.rv-highlight-icon { 
+  color: var(--orange); /* Default Brand Orange */
+  transition: transform 0.4s var(--ease-expo), color 0.4s ease;
+}
+
+.rv-highlight:hover .rv-highlight-icon {
+  color: var(--orange-light);
+  transform: scale(1.08);
+}
 
 .rv-highlight-title {
   font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--orange-light);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cream);
+  transition: color 0.3s ease;
+}
+
+.rv-highlight:hover .rv-highlight-title {
+  color: var(--white);
 }
 
 .rv-highlight-text {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 300;
   color: var(--text-muted);
   line-height: 1.6;
@@ -1773,25 +1812,62 @@ html, body {
       </div>
 
       <div class="rv-reputation-highlights">
+        <!-- Highlight 1: Signature Churrasco -->
         <div class="rv-highlight">
-          <div class="rv-highlight-icon"><i class="rv-icon rv-icon-steak"></i></div>
+          <div class="rv-highlight-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="2" x2="12" y2="17" />
+              <path d="M9 5h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" />
+              <path d="M9 10h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1z" />
+              <path d="M8.5 21.5c1.2-1.3 2-2.5 2.5-3.8 1 .8 1.5 1.7 2.5 2.5.8-.7 1.5-1.7 1-3 1 1 2.5 1 3 2.5.5.3.5.8 0 1.2-.8.8-2.5 1.3-4.5 1.3s-3.7-.4-4.5-1.3z" />
+            </svg>
+          </div>
           <div class="rv-highlight-title">Signature Churrasco</div>
-          <div class="rv-highlight-text">Premium cuts served tableside by our passadores, just as tradition dictates.</div>
+          <div class="rv-highlight-text">Premium fire-roasted cuts served tableside by our passadores, just as tradition dictates.</div>
         </div>
+
+        <!-- Highlight 2: Private Celebrations -->
         <div class="rv-highlight">
-          <div class="rv-highlight-icon"><i class="rv-icon rv-icon-party"></i></div>
+          <div class="rv-highlight-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 13a3 3 0 0 0 4.5-2.6V3H5.5v7.4A3 3 0 0 0 6 13z" />
+              <line x1="8" y1="13" x2="8" y2="19" />
+              <path d="M6 19h4" />
+              <path d="M18 13a3 3 0 0 1-4.5-2.6V3h5v7.4a3 3 0 0 1-.5 2.6z" />
+              <line x1="16" y1="13" x2="16" y2="19" />
+              <path d="M14 19h4" />
+              <circle cx="12" cy="4" r="1" fill="currentColor" stroke="none" opacity="0.6" />
+              <circle cx="15" cy="7" r="0.7" fill="currentColor" stroke="none" opacity="0.6" />
+              <circle cx="11" cy="9" r="0.5" fill="currentColor" stroke="none" opacity="0.6" />
+            </svg>
+          </div>
           <div class="rv-highlight-title">Private Celebrations</div>
-          <div class="rv-highlight-text">Birthdays, anniversaries, and milestones made unforgettable.</div>
+          <div class="rv-highlight-text">Birthdays, anniversaries, and milestones made unforgettable in our private spaces.</div>
         </div>
+
+        <!-- Highlight 3: Warm Hospitality -->
         <div class="rv-highlight">
-          <div class="rv-highlight-icon"><i class="rv-icon rv-icon-handshake"></i></div>
+          <div class="rv-highlight-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+          </div>
           <div class="rv-highlight-title">Warm Hospitality</div>
           <div class="rv-highlight-text">Attentive service that feels genuinely personal from first greeting to final course.</div>
         </div>
+
+        <!-- Highlight 4: Elegant Atmosphere -->
         <div class="rv-highlight">
-          <div class="rv-highlight-icon"><i class="rv-icon rv-icon-star"></i></div>
+          <div class="rv-highlight-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18h18c0-4.42-3.58-8-8-8s-8 3.58-8 8z" />
+              <path d="M2 20h20" />
+              <circle cx="13" cy="8.5" r="1.5" />
+              <path d="M18.5 5.5l1 1M19.5 4.5l-1 1M4.5 5.5l1 1M5.5 4.5l-1 1" />
+            </svg>
+          </div>
           <div class="rv-highlight-title">Elegant Atmosphere</div>
-          <div class="rv-highlight-text">A setting that elevates every visit, whether casual or celebratory.</div>
+          <div class="rv-highlight-text">A setting that elevates every visit, whether casual dining or a celebratory event.</div>
         </div>
       </div>
     </div>
