@@ -174,7 +174,7 @@
     
     /* 1. Base states for animated items */
     #adega-order-banner .plate-image {
-      transition: transform 2.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 2.4s ease-out !important;
+      transition: transform 1.8s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 1.6s ease-out !important;
       will-change: transform, opacity;
     }
     
@@ -358,30 +358,26 @@
           return;
         }
 
-        // Scroll Entrance Animation Trigger with ultra-sensitive observer configuration
+        // Scroll Entrance Animation Trigger configured for high-impact full-screen activation
         const observerOptions = {
           root: null,
-          rootMargin: '-20px 0px -20px 0px', // Small margins to guarantee instant triggering
-          threshold: 0.05 // Tiny threshold (5%) to auto-activate the moment it enters the screen
+          rootMargin: '0px',
+          threshold: 0.5 // Triggers ONLY when 50% of the section is fully visible on the screen
         };
 
-        const bannerObserver = new IntersectionObserver((entries, observer) => {
+        const bannerObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
+              // Automatically activate animations when the section comes fully into view
               banner.classList.add('visible');
-              observer.unobserve(entry.target);
+            } else {
+              // Automatically reset states when scrolled away so it can replay repeatedly
+              banner.classList.remove('visible');
             }
           });
         }, observerOptions);
 
         bannerObserver.observe(banner);
-
-        // Fallback: trigger animation after a short delay in case observer is blocked
-        setTimeout(() => {
-          if (!banner.classList.contains('visible')) {
-            banner.classList.add('visible');
-          }
-        }, 800);
       }
 
       // Execute immediately if DOM is already parsed (highly likely in page builders/AJAX loads)
